@@ -1,0 +1,273 @@
+.signup-information,
+.ellipse {
+  position: absolute; 
+  top: 167px;
+  left: 0;
+  border-radius: 30px;
+  background-color: #e51e1e;
+  width: 375px;
+  height: 645px;
+}
+
+
+
+.ellipse {
+  top: -29px;
+  left: 264px;
+  border-radius: 50%;
+  background-color: #58a856;
+  width: 135px;
+  height: 119px;
+}
+
+.vector-icon,
+.vector-icon1,
+.vector-icon2 {
+  position: absolute;
+  height: 70%;
+  width: 7.65%;
+  top: 4%;
+  right: 8.87%;
+  bottom: 26%;
+  left: 83.49%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+
+.vector-icon1,
+.vector-icon2 {
+  height: 80%;
+  width: 7.07%;
+  top: 0;
+  right: 17.7%;
+  bottom: 20%;
+  left: 75.23%;
+}
+
+.vector-icon2 {
+  height: 50%;
+  width: 7.65%;
+  top: 24%;
+  right: 0;
+  bottom: 26%;
+  left: 92.35%;
+}
+
+.timestamp,
+.icon-system {
+  position: absolute;
+  top: 4%;
+  left: 0;
+}
+
+.icon-system {
+  height: 3.08%;
+  width: 87.2%;
+  top: 1.23%;
+  right: 4.8%;
+  bottom: 95.69%;
+  left: 8%;
+  text-align: left;
+  font-size: 20px;
+  font-family: Inter;
+}
+
+
+.name-input {
+  position: absolute;
+  top: 10;
+  left: -30px;
+  border-radius: 50px;
+  background-color: darkgreen;
+  width: 320px;
+  height: 58.23px;
+  text-align: center;
+  font-size: larger;
+}
+
+.signup-button,
+.signin {
+  position: absolute;
+  top: 4px;
+  left: 65px;
+}
+
+.signup-button {
+  top: 688px;
+  left: 84px;
+  width: 188px;
+  height: 44px;
+  font-size: 25px;
+  color: #fff;
+}
+
+.log-in {
+  font-size: 17px;
+  color: darkgreen;
+}
+
+.already-have-account {
+  position: absolute;
+  top: 744px;
+  left: 55px;
+  display: inline-block;
+  width: 266px;
+  height: 19px;
+}
+
+.signup-banner {
+  position: absolute;
+  top: 195px;
+  left: 30px;
+  width: 320px;
+  height: 58.23px;
+  text-align: center;
+  font-size: large;
+  text-transform: capitalize;
+}
+
+.information-security {
+  position: absolute;
+  top: 241px;
+  left: 75px;
+  font-family: Cambo;
+}
+
+/* .information-box-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 45px;
+  background-color: darkgreen;
+  width: 320px;
+  height: 58.23px;
+} */
+.signup-button-text {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 25px;
+  border-radius: 45px;
+  background-color: darkgreen;
+  width: 150px;
+  height: 58.23px;
+}
+
+.name-label {
+  position: absolute;
+  top: 17.37px;
+  left: 30.48px;
+  display: flex;
+  align-items: center;
+  width: 176.76px;
+  height: 17.37px;
+}
+
+/* .information-boxes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 58.23px;
+} */
+
+.surname-label {
+  position: absolute;
+  top: 23.41px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  width: 149px;
+  height: 12px;
+}
+
+.information-box1 {
+  position: absolute;
+  top: 75.59px;
+  left: 20px;
+  width: 320px;
+  height: 58.23px;
+  text-align: right;
+}
+
+.email-label {
+  position: absolute;
+  top: 19.82px;
+  left: 36px;
+  display: flex;
+  align-items: center;
+  width: 176.76px;
+  height: 17.37px;
+}
+
+.information-box2 {
+  position: absolute;
+  top: 151.18px;
+  left: 0;
+  width: 320px;
+  height: 58.23px;
+}
+
+.password-label,
+.job-label {
+  position: absolute;
+  top: 20.23px;
+  left: 36px;
+  display: flex;
+  align-items: center;
+  width: 205px;
+  height: 18px;
+}
+
+.information-boxes,
+.information-box3,
+.information-box4 { 
+  position: absolute;
+  top: 226.77px;
+  left: 0;
+  width: 320px;
+  height: 58.23px;
+}
+
+.information-boxes,
+.information-box4 {
+  top: 297.77px;
+}
+
+.information-boxes {
+  top: 296px;
+  left: 20px;
+  height: 356px;
+  text-align: left;
+  color: lightgray;
+  font-family: font-cambo;
+}
+
+.whatsapp-image {
+  position: absolute;
+  top: 89px;
+  left: calc(50% - 54.5px);
+  width: 108px;
+  height: 78px;
+  object-fit: cover;
+}
+
+.signup {
+  position: relative;
+  display: flex;
+  left: 50%;
+  transform: translate(-50%);
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background-color: #f9d410;
+  width: 375px;
+  height: 812px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 15px;
+  color: black;
+  font-family: Abel;
+}
+

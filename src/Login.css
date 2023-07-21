@@ -1,0 +1,234 @@
+.login-info,
+.ellipse {
+  position: absolute;
+  top: 167px;
+  left: 0;
+  border-radius: 30px;
+  background-color: #e51e1e;
+  width: 375px;
+  height: 645px;
+}
+/* .ellipse {
+    position: absolute; 
+    top: 167px;
+    left: 0;
+    border-radius: 30px;
+    background-color: #e51e1e;
+    width: 375px;
+    height: 645px;
+  }
+   */
+  .login-container {
+    position: absolute;
+    top: 10;
+    left: 0;
+    width: 375px;
+    height: 812px;
+    overflow: hidden;
+  }
+  
+  .ellipse {
+    top: -29px;
+    left: 264px;
+    border-radius: 50%;
+    background-color: #58a856;
+    width: 135px;
+    height: 119px;
+  }
+  
+  .vector-icon,
+  .vector-icon1,
+  .vector-icon2 {
+    position: absolute;
+    height: 70%;
+    width: 7.65%;
+    top: 4%;
+    right: 8.87%;
+    bottom: 26%;
+    left: 83.49%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  
+  .vector-icon1,
+  .vector-icon2 {
+    height: 80%;
+    width: 7.07%;
+    top: 0;
+    right: 17.7%;
+    bottom: 20%;
+    left: 75.23%;
+  }
+  
+  .vector-icon2 {
+    height: 50%;
+    width: 7.65%;
+    top: 24%;
+    right: 0;
+    bottom: 26%;
+    left: 92.35%;
+  }
+  
+  .timestamp,
+  .icon-system {
+    position: absolute;
+    top: 4%;
+    left: 100;
+  }
+  
+  .icon-system {
+    height: 3.08%;
+    width: 87.2%;
+    top: 1.23%;
+    right: 4.8%;
+    bottom: 95.69%;
+    left: 8%;
+    text-align: left;
+    font-size: 20px;
+    font-family: Inter;
+  }
+
+.log-in-button-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50px;
+  background-color: darkgreen;
+  width: 188px;
+  height: 44px;  
+}
+
+.log-in-button,
+.log-in-btn {
+  position: absolute;
+  top: 4px;
+  left: 73px;
+}
+.log-in-button {
+  top: 688px;
+  left: 84px;
+  width: 188px;
+  height: 44px;
+  font-size: 25px;
+  color: #fff;
+}
+.sign-in {
+  font-size: 17px;
+  color: darkgreen;
+}
+.dont-have-account {
+  position: absolute;
+  top: 744px;
+  left: 55px;
+  display: inline-block;
+  width: 266px;
+  height: 19px;
+}
+.undraw-mobile-ux {
+  position: absolute;
+  top: 230px;
+  left: 112px;
+  width: 152px;
+  height: 164px;
+  overflow: hidden;
+}
+.login-info-box-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 45px;
+  background-color: forestgreen;
+  width: 320px;
+  height: 58.23px;
+}
+.login-email-label {
+  position: absolute;
+  top: 23px;
+  left: 17px;
+  display: flex;
+  align-items: center;
+  width: 141px;
+  height: 12px;
+}
+.login-banner {
+  position: absolute;
+  top: 185px;
+  left: 30px;
+  width: 320px;
+  height: 58.23px;
+  text-align: center;
+  font-size: large;
+  text-transform: capitalize;
+}
+.login-password-label {
+  position: absolute;
+  top: 20px;
+  left: 27px;
+  display: flex;
+  align-items: center;
+  width: 176.76px;
+  height: 17.37px;
+}
+.login-info-box,
+.login-info-box2 {
+  position: absolute;
+  top: 75px;
+  left: 4px;
+  width: 320px;
+  height: 58.23px;
+  text-align: left;
+}
+.login-info-box {
+  top: 406px;
+  left: 18px;
+  width: 324px;
+  height: 133.23px;
+  text-align: right;
+  color: lightgray;
+  font-family: Cambo;
+}
+.login-details {
+  position: absolute;
+  top: 260px;
+  left: 22px;
+  font-size: 22px;
+}
+.forgot-password {
+  position: absolute;
+  top: 569px;
+  left: 89px;
+  font-size: 17px;
+  color: #06480b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 197px;
+  height: 34px;
+}
+.whatsapp-image {
+  position: absolute;
+  top: 89px;
+  left: calc(50% - 54.5px);
+  width: 108px;
+  height: 78px;
+  object-fit: cover;
+}
+.login {
+  position: relative;
+  border-radius: 15px;
+  background-color: #f9d410;
+  width: 375px;
+  height: 812px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 15px;
+  color: black;
+  font-family: Abel; 
+  display: flex;
+  left: 50%;
+  transform: translate(-50%);
+  align-items: center;
+  justify-content: center;  
+}
+
