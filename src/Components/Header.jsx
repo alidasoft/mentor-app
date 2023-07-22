@@ -19,7 +19,7 @@ const Header = ({ timestamp, target_user }) => {
             <div className="welcome-container">
                 <span className="welcome-container1">
                     <span className="welcome">{`Welcome `}</span>
-                    <span className="dauda-bary">Dauda BARY</span>
+                    <span className="user-name">Dauda BARY</span>
                 </span>
             </div>
         </div>
