@@ -1,8 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 
 const SignupComponent = ({ target_user, timestamp }) => {
+  const [value, setValue] = useState('')
+  const [data, setData] = useState({
+    name: '',
+    surname: '',
+    email: '',
+    password: '',
+    job: '',
+  })
+  const { name, surname, email, password, job } = data
+  const handleInput = (e) => {
+    setValue(e.target.value)
+  }
+
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value })
+  }
+  const handleSubmit = () => {
+    const user = { name, surname, email, password, job }
+    console.log(user)
+  }
   return (
     <div className="signup">
       <div className="ellipse" />
@@ -26,37 +46,37 @@ const SignupComponent = ({ target_user, timestamp }) => {
         <div className="information-box">
           <div className="information-box-child" />
           <div className="name-label">
-            <input className="name-input" placeholder="Enter your Name" />
+            <input className="name-input" placeholder="Enter your Name" value={name} name='name' onChange={handleChange} />
           </div>
         </div>
         <div className="information-box1">
           <div className="information-box-child" />
           <div className="surname-label">
-            <input className="name-input" placeholder="Enter your Surname" />
+            <input className="name-input" placeholder="Enter your Surname" name='surname' value={surname} onChange={handleChange}  />
           </div>
         </div>
         <div className="information-box2">
           <div className="information-box-child" />
           <div className="email-label">
-            <input className="name-input" placeholder="Enter your Email" />
+            <input className="name-input" placeholder="Enter your Email" value={email} name='email' onChange={handleChange} />
           </div>
         </div>
         <div className="information-box3">
           <div className="information-box-child" />
           <div className="password-label">
-            <input className="name-input" placeholder="Enter your Password" />
+            <input className="name-input" placeholder="Enter your Password" value={password} name='password' onChange={handleChange} />
           </div>
         </div>
         <div className="information-box4">
           <div className="information-box-child" />
           <div className="job-label">
-            <input className="name-input" placeholder="Enter your Job" />
+            <input className="name-input" placeholder="Enter your Job" name='job' value={job} onChange={handleChange} />
           </div>
         </div>
       </div>
       <div className="signup-button">
         <div className="signup-button-child" />
-        <button className="signup-button-text">Sign Up</button>
+        <button className="signup-button-text" onClick={handleSubmit}>Sign Up</button>
       </div>
       <div className="already-have-account">
         <span>{`Already have an account? `}</span> 

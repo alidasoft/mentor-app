@@ -90,6 +90,8 @@
   }
 
 .log-in-button-child {
+  color: #d9d9d9;
+  cursor: pointer;
   position: absolute;
   top: 0;
   left: 0;
@@ -214,6 +216,7 @@
   height: 78px;
   object-fit: cover;
 }
+
 .login {
   position: relative;
   border-radius: 15px;
@@ -231,4 +234,182 @@
   align-items: center;
   justify-content: center;  
 }
+.dashboard {
+  width: 375px;
+  height: 812px;
+  overflow: hidden;
+  
+}
 
+.dashboard-child {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 192.5px);
+  background-color: #f9d410;
+  width: 380px;
+  height: 217px;
+}
+
+.shipe-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 196px;
+  height: 189px;
+}
+
+.photo-dauda-child {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  width: 146px;
+  height: 139px;
+}
+
+.dauda-barry-icon {
+  position: absolute;
+  top: 0;
+  left: 3px;
+  border-radius: 100px;
+  width: 139px;
+  height: 143px;
+  object-fit: cover;
+}
+
+.camera-icon,
+.photo-dauda {
+  position: absolute;
+  top: 44px;
+  left: 118px;
+  width: 146px;
+  height: 143px;
+}
+
+.camera-icon {
+  top: 159px;
+  left: 220px;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
+
+.welcome {
+  font-weight: 900;
+}
+
+.dauda-bary {
+  font-weight: 500;
+}
+
+.welcome-dauda-bary-container1 {
+  line-break: anywhere;
+  width: 100%;
+}
+
+.welcome-dauda-bary-container {
+  position: absolute;
+  top: 186px;
+  left: 74px;
+  color: rgba(0, 0, 0, 0.75);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  width: 232px;
+  height: 24px;
+}
+
+.dashboard-item {
+  position: absolute;
+  top: 246px;
+  left: 0;
+  border-radius: 30px;
+  background-color: #e51e1e;
+  width: 386px;
+  height: 578px;
+}
+
+.information-boxe,
+.information-box3,
+.information-box4{
+position: absolute;
+top: 226.77px;
+left: 0;
+width: 320px;
+height: 58.23px;
+}
+
+.information-boxe,
+.information-box4 {
+top: 297.77px;
+}
+
+.information-boxe {
+  top: 357px;
+  left: 30px;
+  height: 356px;
+  font-size: 15px;
+  color: lightgray;
+  font-family: Cambo;
+}
+
+.button-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 45px;
+  background-color: darkgreen;
+  width: 188px;
+  height: 44px;
+}
+
+.button,
+.edit-profile {
+  position: absolute;
+  top: 4px;
+  left: 46px;
+}
+
+.button {
+  top: 230px;
+  left: 76px;
+  width: 188px;
+  height: 44px;
+  text-align: center;
+  font-size: 26px;
+  color: white;
+  font-family: Abel;
+}
+
+.upgrade {
+  position: absolute;
+  top: 6px;
+  left: 56px;
+}
+
+.button-wrapper,
+.button1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 188px;
+  height: 44px;
+}
+
+.button-wrapper {
+  top: 733px;
+  left: 118px;
+  text-align: center;
+  font-size: 26px;
+  color: white;
+  font-family:Abel;
+}
+
+.dashboard {
+  position: relative;
+  border-radius: 15px;
+  background-color:whitesmoke;
+  transform: translate(-50%);
+  left: 50%;
+  }
