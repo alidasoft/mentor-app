@@ -34,8 +34,8 @@ const LoginComponent = ({ target_user, timestamp }) => {
         alt=""
         src="/whatsapp-image-20230613-at-2143-1@2x.png"
       />
-      <div className="login-info" />
-      <div className="login-banner">{target_user} Login</div>
+      <div className="information" />
+      <div className="banner">{target_user} Login</div>
 
       <img
         className="undraw-mobile-ux"
@@ -44,31 +44,23 @@ const LoginComponent = ({ target_user, timestamp }) => {
       />
       
       <div className="login-details">
-        <div className="information-box2">
-          <div className="information-box-child" />
-          <div className="email-label">
-            <input className="name-input" placeholder="Enter your Email" value={email} onChange={handleInput} name='email' />
-          </div>
+      <div className="information-box2">
+          <input className="name-input" placeholder="Enter your Email" value={email} name='email'  />
         </div>
         <div className="information-box3">
-          <div className="information-box-child" />
-          <div className="password-label">
-            <input className="name-input" placeholder="Enter your Password" value={password} onChange={handleInput} name='password' />
-          </div>
+            <input className="name-input" placeholder="Enter your Password" value={password} name='password' />
         </div>
       </div>
-
       <div className="forgot-password">
         <span><Link to='/reset_password'>Forgot your password?</Link></span>
       </div>
 
-      <div className="log-in-button">
-        <div className="log-in-button-child" />
-        <button className="log-in-button-child" onClick={handleSubmit}>Log in</button>
+      <div className="btn btn-button">
+        <button className="button-text" onClick={handleSubmit}>Log In</button>
       </div>
-      <div className="already-have-account">
+      <div className="dont-have-account">
         <span>{`Don't have an account ? `}</span>
-        <span className="sign-in"><Link to={`/${target_user}/signup`}>signup </Link> </span>
+        <Link to={`/${target_user}/signup`}>Sign in</Link>
       </div>
     </div>
   )

@@ -11,13 +11,13 @@ const Header = ({ timestamp, target_user }) => {
                 <img className="vector-icon" alt="" src="/vector.svg" />
                 <div className="timestamp">{timestamp}</div>
             </div>
-            <div className="photo-dauda">
-                <div className="photo-dauda-child" />
-                <img className="dauda-barry-icon" alt="" src="/daudabarry@2x.png" />
+            <div className="photo">
+                <div className="photo-child" />
+                <img className="photo-icon" alt="" src="/daudabarry@2x.png" />
             </div>
             <img className="camera-icon" alt="" src="/camera.svg" />
-            <div className="welcome-dauda-bary-container">
-                <span className="welcome-dauda-bary-container1">
+            <div className="welcome-container">
+                <span className="welcome-container1">
                     <span className="welcome">{`Welcome `}</span>
                     <span className="dauda-bary">Dauda BARY</span>
                 </span>

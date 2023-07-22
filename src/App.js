@@ -1,5 +1,4 @@
-import "./Signup.css";
-import "./Login.css";
+import "./App.css";
 import React, { useState, useEffect } from "react"; 
 import { Routes, Route, useNavigationType, useLocation } from "react-router-dom";
 
