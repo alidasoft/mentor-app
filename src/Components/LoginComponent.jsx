@@ -1,7 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const LoginComponent = ({ target_user, timestamp }) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const handleInput = (e) => {
+    if (e.target.placeholder === 'Enter your Email') {
+      setEmail(e.target.value)
+    }
+    if (e.target.placeholder === 'Enter your Password') {
+      setPassword(e.target.value)
+    }
+
+  }
+  const handleSubmit = () => {
+    const user = {
+      email,
+      password
+    }
+    console.log(user)
+  }
   return (
     <div className="login">
       <div className="ellipse" />
@@ -29,13 +47,13 @@ const LoginComponent = ({ target_user, timestamp }) => {
         <div className="information-box2">
           <div className="information-box-child" />
           <div className="email-label">
-            <input className="name-input" placeholder="Enter your Email" />
+            <input className="name-input" placeholder="Enter your Email" value={email} onChange={handleInput} name='email' />
           </div>
         </div>
         <div className="information-box3">
           <div className="information-box-child" />
           <div className="password-label">
-            <input className="name-input" placeholder="Enter your Password" />
+            <input className="name-input" placeholder="Enter your Password" value={password} onChange={handleInput} name='password' />
           </div>
         </div>
       </div>
@@ -46,7 +64,7 @@ const LoginComponent = ({ target_user, timestamp }) => {
 
       <div className="log-in-button">
         <div className="log-in-button-child" />
-        <div className="log-in-btn">Login</div>
+        <button className="log-in-button-child" onClick={handleSubmit}>Log in</button>
       </div>
       <div className="already-have-account">
         <span>{`Don't have an account ? `}</span>
