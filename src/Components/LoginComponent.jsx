@@ -29,26 +29,18 @@ const LoginComponent = ({ target_user, timestamp }) => {
         <img className="vector-icon2" alt="" src="/vector2.svg" />
         <b className="timestamp">{timestamp}</b>
       </div>
-      <img
-        className="whatsapp-image"
-        alt=""
-        src="/whatsapp-image-20230613-at-2143-1@2x.png"
-      />
+      <img className="logo-image" alt="guineansyouthorganization" src="/logo.png" />
       <div className="information" />
       <div className="banner">{target_user} Login</div>
 
-      <img
-        className="undraw-mobile-ux"
-        alt=""
-        src="/undraw-mobile-ux.svg"
-      />
-      
+      <img className="undraw-mobile-ux" alt="" src="/undraw-mobile-ux.svg" />
+
       <div className="login-details">
-      <div className="information-box2">
-          <input className="name-input" placeholder="Enter your Email" value={email} name='email'  />
+        <div className="information-box2">
+          <input className="name-input" placeholder="Enter your Email" value={email} name='email' />
         </div>
         <div className="information-box3">
-            <input className="name-input" placeholder="Enter your Password" value={password} name='password' />
+          <input className="name-input" placeholder="Enter your Password" value={password} name='password' />
         </div>
       </div>
       <div className="forgot-password">
@@ -60,7 +52,7 @@ const LoginComponent = ({ target_user, timestamp }) => {
       </div>
       <div className="dont-have-account">
         <span>{`Don't have an account ? `}</span>
-        <Link to={`/${target_user}/signup`}>Sign in</Link>
+        <Link to={`/${target_user}/signup`}>Sign-up</Link>
       </div>
     </div>
   )
