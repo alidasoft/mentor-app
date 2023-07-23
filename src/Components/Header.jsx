@@ -1,6 +1,21 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from "react";
 
 const Header = ({ timestamp, target_user }) => {
+    const fileInputRef = useRef(null)
+    const [image, setImage] = useState(null)
+
+    const handleImage = (e) => {
+        console.log('file');
+        const file = e.target.files[0]; 
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setImage(reader.result); 
+        };
+
+        if (file) {
+            reader.readAsDataURL(file); 
+        }
+    }
     return (
         <div className="dashboard">
             <div className="dashboard-child" />
@@ -13,9 +28,13 @@ const Header = ({ timestamp, target_user }) => {
             </div>
             <div className="photo">
                 <div className="photo-child" />
-                <img className="photo-icon" alt="" src="/daudabarry@2x.png" />
+                {/* Display the selected image */}
+                {image && <img className="photo-icon" alt="" src={image} />}
             </div>
-            <img className="camera-icon" alt="" src="/camera.svg" />
+            <label>
+                <input type="file" accept="image/*" ref={fileInputRef} onChange={handleImage}  />
+                <img className="camera-icon" alt="" src="/camera.svg" />
+            </label>
             <div className="welcome-container">
                 <span className="welcome-container1">
                     <span className="welcome">{`Welcome `}</span>
