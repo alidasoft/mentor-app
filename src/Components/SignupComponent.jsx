@@ -31,11 +31,8 @@ const SignupComponent = ({ target_user, timestamp }) => {
         <img className="vector-icon2" alt="" src="/vector2.svg" />
         <b className="timestamp">{timestamp}</b>
       </div>
-      <img
-        className="whatsapp-image"
-        alt=""
-        src="/whatsapp-image-20230613-at-2143-1@2x.png"
-      />
+      <img className="logo-image" alt="guineansyouthorganization" src="/logo.png" />
+
       <div className="information" />
       <div className="banner">{target_user} Sign-In</div>
       <div className="information-security">
@@ -59,7 +56,7 @@ const SignupComponent = ({ target_user, timestamp }) => {
         </div>
       </div>
       <div className="btn btn-button">
-        <button className="button-text" onClick={handleSubmit}>Sign-In</button>
+        <button className="button-text" onClick={handleSubmit}>Sign-Up</button>
       </div>
       <div className="already-have-account">
         <span>{`Already have an account? `}</span>
@@ -70,4 +67,3 @@ const SignupComponent = ({ target_user, timestamp }) => {
 }
 
 export default SignupComponent
-

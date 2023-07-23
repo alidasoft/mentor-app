@@ -9,6 +9,8 @@ import MenteeSignup from "./pages/mentee_pages/MenteeSignup";
 import AdminLogin from "./pages/admin_pages/AdminLogin";
 import AdminSignup from "./pages/admin_pages/AdminSignup";
 import Header from "./Components/Header";
+import UnderConstruction from "./Components/UnderConstruction";
+import EditProfile from "./pages/edit-profile/EditProfile";
 
 function App() {
   const location = useLocation();
@@ -47,7 +49,8 @@ function App() {
             <Route path="/mentee/login" element={<MenteeLogin target_user={'mentee'} timestamp={timestamp} />} />
             <Route path="/admin/signup" element={<AdminSignup target_user={`admin`} timestamp={timestamp} />} />
             <Route path="/admin/login" element={<AdminLogin target_user={'admin'} timestamp={timestamp} />} />
-            <Route path="/edit/profile" element={ <Header timestamp={timestamp} />} />
+            <Route path="/edit/profile" element={ <EditProfile timestamp={timestamp} />} />
+            <Route path="/error" element={<UnderConstruction timestamp={timestamp} />} />
         </Routes>
     );
 }
