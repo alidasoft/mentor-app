@@ -121,6 +121,7 @@
 
 .camera-icon,
 .photo {
+  cursor: pointer;
   position: absolute;
   top: 44px;
   left: 118px;
