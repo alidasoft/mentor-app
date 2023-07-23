@@ -34,7 +34,7 @@ const SignupComponent = ({ target_user, timestamp }) => {
       <img className="logo-image" alt="guineansyouthorganization" src="/logo.png" />
 
       <div className="information" />
-      <div className="banner">{target_user} Sign-In</div>
+      <div className="banner">{target_user} Sign-up</div>
       <div className="information-security">
         Your information will remain secure
       </div>
