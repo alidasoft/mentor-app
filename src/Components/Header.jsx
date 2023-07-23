@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react'
 
 const Header = ({ timestamp, target_user }) => {
     return (
