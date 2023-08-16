@@ -11,17 +11,17 @@ import AdminSignup from "./pages/admin_pages/AdminSignup";
 import Header from "./Components/Header";
 import UnderConstruction from "./Components/UnderConstruction";
 import EditProfile from "./pages/edit-profile/EditProfile";
-import "@aws-amplify/ui-react/styles.css";
-import {
-  withAuthenticator,
-  Button,
-  Heading,
-  Image,
-  View,
-  Card,
-} from "@aws-amplify/ui-react";
+// import "@aws-amplify/ui-react/styles.css";
+// import {
+//   withAuthenticator,
+//   Button,
+//   Heading,
+//   Image,
+//   View,
+//   Card,
+// } from "@aws-amplify/ui-react";
 
-function App({ signOut }) {
+function App() {
   const location = useLocation();
   const action = useNavigationType();
   const pathname = location.pathname;
@@ -60,9 +60,9 @@ function App({ signOut }) {
             <Route path="/admin/login" element={<AdminLogin target_user={'admin'} timestamp={timestamp} />} />
             <Route path="/edit/profile" element={ <EditProfile timestamp={timestamp} />} />
             <Route path="/error" element={<UnderConstruction timestamp={timestamp} />} />
-            <Button onClick={signOut}>Sign Out</Button>
+            // <Button onClick={signOut}>Sign Out</Button>
         </Routes>
     );
 }
 
-export default withAuthenticator(App);
+export default App;
