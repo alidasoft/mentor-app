@@ -60,7 +60,6 @@ function App() {
             <Route path="/admin/login" element={<AdminLogin target_user={'admin'} timestamp={timestamp} />} />
             <Route path="/edit/profile" element={ <EditProfile timestamp={timestamp} />} />
             <Route path="/error" element={<UnderConstruction timestamp={timestamp} />} />
-            // <Button onClick={signOut}>Sign Out</Button>
         </Routes>
     );
 }
