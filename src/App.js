@@ -11,17 +11,17 @@ import AdminSignup from "./pages/admin_pages/AdminSignup";
 import Header from "./Components/Header";
 import UnderConstruction from "./Components/UnderConstruction";
 import EditProfile from "./pages/edit-profile/EditProfile";
-// import "@aws-amplify/ui-react/styles.css";
-// import {
-//   withAuthenticator,
-//   Button,
-//   Heading,
-//   Image,
-//   View,
-//   Card,
-// } from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
+import {
+  withAuthenticator,
+  Button,
+  Heading,
+  Image,
+  View,
+  Card,
+} from "@aws-amplify/ui-react";
 
-function App() {
+function App({ signOut }) {
   const location = useLocation();
   const action = useNavigationType();
   const pathname = location.pathname;
@@ -51,6 +51,7 @@ function App() {
   }, []);
 
     return (
+      <>
         <Routes>
             <Route path="/mentor/signup" element={<MentorSignup target_user={'mentor'} timestamp={timestamp}  />} />
             <Route path="/mentor/login" element={<MentorLogin target_user={'mentor'} timestamp={timestamp} />} />
@@ -61,7 +62,14 @@ function App() {
             <Route path="/edit/profile" element={ <EditProfile timestamp={timestamp} />} />
             <Route path="/error" element={<UnderConstruction timestamp={timestamp} />} />
         </Routes>
+          <View className="App">
+          <Card>
+            <Heading level={1}>We now have Auth!</Heading>
+          </Card>
+          <Button onClick={signOut}>Sign Out</Button>
+        </View>
+        </>
     );
 }
 
-export default App;
+export default withAuthenticator(App);
