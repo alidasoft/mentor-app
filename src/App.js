@@ -51,7 +51,6 @@ function App({ signOut }) {
   }, []);
 
     return (
-      <>
         <Routes>
             <Route path="/mentor/signup" element={<MentorSignup target_user={'mentor'} timestamp={timestamp}  />} />
             <Route path="/mentor/login" element={<MentorLogin target_user={'mentor'} timestamp={timestamp} />} />
@@ -62,14 +61,7 @@ function App({ signOut }) {
             <Route path="/edit/profile" element={ <EditProfile timestamp={timestamp} />} />
             <Route path="/error" element={<UnderConstruction timestamp={timestamp} />} />
         </Routes>
-          <View className="App">
-          <Card>
-            <Heading level={1}>We now have Auth!</Heading>
-          </Card>
-          <Button onClick={signOut}>Sign Out</Button>
-        </View>
-        </>
     );
 }
 
-export default withAuthenticator(App);
+export default App;
