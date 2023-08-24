@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Auth } from "aws-amplify";
+
 
 const SignupComponent = ({ target_user, timestamp }) => {
   const [value, setValue] = useState('')
@@ -56,7 +58,7 @@ const SignupComponent = ({ target_user, timestamp }) => {
         </div>
       </div>
       <div className="btn btn-button">
-        <button className="button-text" onClick={handleSubmit}>Sign-Up</button>
+        <button className="button-text" onClick={() => Auth.signUp({ username: email, password, attributes: { email } })}>Sign Up</button>
       </div>
       <div className="already-have-account">
         <span>{`Already have an account? `}</span>
