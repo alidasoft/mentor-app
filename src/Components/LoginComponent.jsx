@@ -56,6 +56,9 @@ const LoginComponent = ({ target_user, timestamp }) => {
         <span>{`Don't have an account ? `}</span>
         <Link to={`/${target_user}/signup`}>Sign-up</Link>
       </div>
+      <div className="home">
+        <Link to={`/`}>homepage</Link>
+      </div>
     </div>
   )
 }

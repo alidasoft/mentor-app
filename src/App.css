@@ -25,6 +25,15 @@
   width: 266px;
   height: 19px;
 }
+.home {
+  position: absolute;
+  top: 780px;
+  left: 55px;
+  font-size: large;
+  display: inline-block;
+  width: 266px;
+  height: 19px;
+}
 
 .log-in {
   font-size: 17px;
@@ -438,4 +447,22 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+/* Example CSS (you can adjust these styles according to your design) */
+
+.card {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; /* Adjust the value to control the roundness */
+  margin: 10px;
+}
+
+.mentor-card {
+  background-color: lightblue;
+}
+
+.mentee-card {
+  background-color: lightgreen;
 }

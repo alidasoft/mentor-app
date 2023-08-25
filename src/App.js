@@ -20,6 +20,7 @@ import {
   View,
   Card,
 } from "@aws-amplify/ui-react";
+import HomeComponent from "./Components/HomeComponent";
 
 function App({ signOut }) {
   const location = useLocation();
@@ -60,6 +61,7 @@ function App({ signOut }) {
             <Route path="/admin/login" element={<AdminLogin target_user={'admin'} timestamp={timestamp} />} />
             <Route path="/edit/profile" element={ <EditProfile timestamp={timestamp} />} />
             <Route path="/error" element={<UnderConstruction timestamp={timestamp} />} />
+            <Route path="/" element={<HomeComponent timestamp={timestamp} />} />
         </Routes>
     );
 }
