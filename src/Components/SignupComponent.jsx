@@ -6,22 +6,22 @@ import { Auth } from "aws-amplify";
 const SignupComponent = ({ target_user, timestamp }) => {
   const [value, setValue] = useState('')
   const [data, setData] = useState({
-    name: '',
-    surname: '',
+    given_name: '',
+    family_name: '',
     email: '',
     password: '',
     job: '',
   })
-  const { name, surname, email, password, job } = data
-  const handleInput = (e) => {
-    setValue(e.target.value)
-  }
+  const { given_name, family_name, email, password, job } = data
+  // const handleInput = (e) => {
+  //   setValue(e.target.value)
+  // }
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value })
   }
   const handleSubmit = () => {
-    const user = { name, surname, email, password, job }
+    const user = { given_name, family_name, email, password, job }
     console.log(user)
   }
   return (
@@ -42,10 +42,10 @@ const SignupComponent = ({ target_user, timestamp }) => {
       </div>
       <div className="information-boxes">
         <div className="information-box">
-          <input className="name-input" placeholder="Enter your Name" value={name} name='name' onChange={handleChange} />
+          <input className="name-input" placeholder="Enter your Name" value={given_name} name='given_name' onChange={handleChange} />
         </div>
         <div className="information-box1">
-          <input className="name-input" placeholder="Enter your Surname" name='surname' value={surname} onChange={handleChange} />
+          <input className="name-input" placeholder="Enter your Family Name" name='family_name' value={family_name} onChange={handleChange} />
         </div>
         <div className="information-box2">
           <input className="name-input" placeholder="Enter your Email" value={email} name='email' onChange={handleChange} />
@@ -58,7 +58,7 @@ const SignupComponent = ({ target_user, timestamp }) => {
         </div>
       </div>
       <div className="btn btn-button">
-        <button className="button-text" onClick={() => Auth.signUp({ username: email, password, attributes: { email } })}>Sign Up</button>
+        <button className="button-text" onClick={() => Auth.signUp({ username: email, password, attributes: { given_name, family_name } })}>Sign-up</button>
       </div>
       <div className="already-have-account">
         <span>{`Already have an account? `}</span>
