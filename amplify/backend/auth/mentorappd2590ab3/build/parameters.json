@@ -1,0 +1,77 @@
+{
+  "identityPoolName": "mentorappd2590ab3_identitypool_d2590ab3",
+  "allowUnauthenticatedIdentities": false,
+  "resourceNameTruncated": "mentord2590ab3",
+  "userPoolName": "mentorappd2590ab3_userpool_d2590ab3",
+  "autoVerifiedAttributes": [
+    "email"
+  ],
+  "mfaConfiguration": "OFF",
+  "mfaTypes": [
+    "SMS Text Message"
+  ],
+  "smsAuthenticationMessage": "Your authentication code is {####}",
+  "smsVerificationMessage": "Your verification code is {####}",
+  "emailVerificationSubject": "Your verification code",
+  "emailVerificationMessage": "Your verification code is {####}",
+  "defaultPasswordPolicy": false,
+  "passwordPolicyMinLength": 8,
+  "passwordPolicyCharacters": [],
+  "requiredAttributes": [
+    "email",
+    "family_name",
+    "given_name"
+  ],
+  "aliasAttributes": [],
+  "userpoolClientGenerateSecret": false,
+  "userpoolClientRefreshTokenValidity": 30,
+  "userpoolClientWriteAttributes": [
+    "email"
+  ],
+  "userpoolClientReadAttributes": [
+    "email"
+  ],
+  "userpoolClientLambdaRole": "mentord2590ab3_userpoolclient_lambda_role",
+  "userpoolClientSetAttributes": false,
+  "sharedId": "d2590ab3",
+  "resourceName": "mentorappd2590ab3",
+  "authSelections": "identityPoolAndUserPool",
+  "useDefault": "default",
+  "usernameAttributes": [
+    "email"
+  ],
+  "triggers": "{\"CustomMessage\":[\"verification-link\"]}",
+  "userPoolGroupList": [],
+  "serviceName": "Cognito",
+  "verificationBucketName": "mentorappd2590ab3verificationbucket",
+  "usernameCaseSensitive": false,
+  "useEnabledMfas": true,
+  "authRoleArn": {
+    "Fn::GetAtt": [
+      "AuthRole",
+      "Arn"
+    ]
+  },
+  "unauthRoleArn": {
+    "Fn::GetAtt": [
+      "UnauthRole",
+      "Arn"
+    ]
+  },
+  "breakCircularDependency": true,
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "mentorappd2590ab3CustomMessage",
+      "triggerProvider": "Cognito",
+      "attributes": [
+        "Arn",
+        "Name"
+      ]
+    }
+  ],
+  "permissions": [],
+  "authTriggerConnections": [
+    "{\"triggerType\":\"CustomMessage\",\"lambdaFunctionName\":\"mentorappd2590ab3CustomMessage\"}"
+  ]
+}

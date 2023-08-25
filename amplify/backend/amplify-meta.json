@@ -1,0 +1,99 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplifye8082b50be624-staging-141739-authRole",
+      "UnauthRoleArn": "arn:aws:iam::540546288770:role/amplify-amplifye8082b50be624-staging-141739-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::540546288770:role/amplify-amplifye8082b50be624-staging-141739-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-amplifye8082b50be624-staging-141739-deployment",
+      "UnauthRoleName": "amplify-amplifye8082b50be624-staging-141739-unauthRole",
+      "StackName": "amplify-amplifye8082b50be624-staging-141739",
+      "StackId": "arn:aws:cloudformation:us-east-1:540546288770:stack/amplify-amplifye8082b50be624-staging-141739/d0fd1530-41bf-11ee-955f-1215a9852701",
+      "AmplifyAppId": "d3cukazce5musz",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-amplifye8082b50be624-staging-141739-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    }
+  },
+  "function": {
+    "mentorappd2590ab3CustomMessage": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2023-08-23T14:46:09.769Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2023-08-23T14:46:09.817Z",
+      "distZipFilename": "mentorappd2590ab3CustomMessage-776c434d6c352b544b68-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-amplifye8082b50be624-staging-141739-deployment",
+        "s3Key": "amplify-builds/mentorappd2590ab3CustomMessage-776c434d6c352b544b68-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifye8082b50be624-staging-141739-deployment/amplify-cfn-templates/function/mentorappd2590ab3CustomMessage-cloudformation-template.json",
+        "logicalId": "functionmentorappd2590ab3CustomMessage"
+      },
+      "lastPushTimeStamp": "2023-08-23T14:48:37.365Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::540546288770:role/mentorappd2590ab3CustomMessage-staging",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:540546288770:function:mentorappd2590ab3CustomMessage-staging",
+        "Name": "mentorappd2590ab3CustomMessage-staging",
+        "LambdaExecutionRole": "mentorappd2590ab3CustomMessage-staging"
+      },
+      "lastPushDirHash": "lNOu9r3p3hD4xkhpj4FuyvQcNOo="
+    }
+  },
+  "auth": {
+    "mentorappd2590ab3": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "mentorappd2590ab3CustomMessage",
+          "triggerProvider": "Cognito",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        }
+      ],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL",
+          "FAMILY_NAME",
+          "GIVEN_NAME"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifye8082b50be624-staging-141739-deployment/amplify-cfn-templates/auth/mentorappd2590ab3-cloudformation-template.json",
+        "logicalId": "authmentorappd2590ab3"
+      },
+      "lastPushTimeStamp": "2023-08-23T14:48:37.365Z",
+      "output": {
+        "UserPoolId": "us-east-1_hMamarFrA",
+        "AppClientIDWeb": "6uiu2m09kkq2u823c4h0mf27d3",
+        "AppClientID": "683qp5oq5pbheakmuu7k12dkqa",
+        "IdentityPoolId": "us-east-1:37b27a47-1c9c-428f-8045-5252d0e4b6b6",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:540546288770:userpool/us-east-1_hMamarFrA",
+        "IdentityPoolName": "mentorappd2590ab3_identitypool_d2590ab3__staging",
+        "UserPoolName": "mentorappd2590ab3_userpool_d2590ab3"
+      },
+      "lastPushDirHash": "k1poDoM19Vh9Vs0EbsG/Db+cq1s="
+    }
+  }
+}
