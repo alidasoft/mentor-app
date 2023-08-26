@@ -1,6 +1,6 @@
 {
   "auth": {
-    "mentorappd2590ab3": {
+    "mentorapp0dc4a120": {
       "customAuth": false,
       "dependsOn": [
         {
@@ -9,7 +9,7 @@
             "Name"
           ],
           "category": "function",
-          "resourceName": "mentorappd2590ab3CustomMessage",
+          "resourceName": "mentorapp0dc4a120CustomMessage",
           "triggerProvider": "Cognito"
         }
       ],
@@ -25,7 +25,7 @@
         "signupAttributes": [
           "EMAIL",
           "FAMILY_NAME",
-          "GIVEN_NAME"
+          "NAME"
         ],
         "socialProviders": [],
         "usernameAttributes": [
@@ -40,6 +40,11 @@
     }
   },
   "function": {
+    "mentorapp0dc4a120CustomMessage": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "mentorappd2590ab3CustomMessage": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -47,6 +52,46 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_mentorapp0dc4a120CustomMessage_EMAILMESSAGE": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "mentorapp0dc4a120CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_mentorapp0dc4a120CustomMessage_EMAILSUBJECT": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "mentorapp0dc4a120CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_mentorapp0dc4a120CustomMessage_REDIRECTURL": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "mentorapp0dc4a120CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_mentorapp0dc4a120CustomMessage_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "mentorapp0dc4a120CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_mentorapp0dc4a120CustomMessage_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "mentorapp0dc4a120CustomMessage"
+        }
+      ]
+    },
     "AMPLIFY_function_mentorappd2590ab3CustomMessage_EMAILMESSAGE": {
       "usedBy": [
         {

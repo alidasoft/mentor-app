@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "mentorappd2590ab3_identitypool_d2590ab3",
+    "identityPoolName": "mentorapp0dc4a120_identitypool_0dc4a120",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "mentord2590ab3",
-    "userPoolName": "mentorappd2590ab3_userpool_d2590ab3",
+    "resourceNameTruncated": "mentor0dc4a120",
+    "userPoolName": "mentorapp0dc4a120_userpool_0dc4a120",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -22,7 +22,7 @@
     "requiredAttributes": [
       "email",
       "family_name",
-      "given_name"
+      "name"
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
@@ -33,10 +33,10 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "mentord2590ab3_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "mentor0dc4a120_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "d2590ab3",
-    "resourceName": "mentorappd2590ab3",
+    "sharedId": "0dc4a120",
+    "resourceName": "mentorapp0dc4a120",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
     "usernameAttributes": [
@@ -49,7 +49,7 @@
     },
     "userPoolGroupList": [],
     "serviceName": "Cognito",
-    "verificationBucketName": "mentorappd2590ab3verificationbucket",
+    "verificationBucketName": "mentorapp0dc4a120verificationbucket",
     "usernameCaseSensitive": false,
     "useEnabledMfas": true
   }

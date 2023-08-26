@@ -14,7 +14,8 @@
     },
     "categories": {
       "auth": {
-        "mentorappd2590ab3": {}
+        "mentorappd2590ab3": {},
+        "mentorapp0dc4a120": {}
       },
       "function": {
         "mentorappd2590ab3CustomMessage": {
@@ -23,6 +24,13 @@
           "EMAILMESSAGE": "click link below to verify your email",
           "deploymentBucketName": "amplify-amplifye8082b50be624-staging-141739-deployment",
           "s3Key": "amplify-builds/mentorappd2590ab3CustomMessage-776c434d6c352b544b68-build.zip"
+        },
+        "mentorapp0dc4a120CustomMessage": {
+          "REDIRECTURL": "https://main.d3cukazce5musz.amplifyapp.com/home",
+          "EMAILSUBJECT": "click link to verify email",
+          "EMAILMESSAGE": "verify",
+          "deploymentBucketName": "amplify-amplifye8082b50be624-staging-141739-deployment",
+          "s3Key": "amplify-builds/mentorapp0dc4a120CustomMessage-31674c594e79396e4451-build.zip"
         }
       }
     }

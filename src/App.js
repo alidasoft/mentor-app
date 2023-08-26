@@ -60,7 +60,7 @@ function App({ signOut }) {
             <Route path="/admin/signup" element={<AdminSignup target_user={`admin`} timestamp={timestamp} />} />
             <Route path="/admin/login" element={<AdminLogin target_user={'admin'} timestamp={timestamp} />} />
             <Route path="/edit/profile" element={ <EditProfile timestamp={timestamp} />} />
-            <Route path="/error" element={<UnderConstruction timestamp={timestamp} />} />
+            <Route path="/home" element={<UnderConstruction timestamp={timestamp} />} />
             <Route path="/" element={<HomeComponent timestamp={timestamp} />} />
         </Routes>
     );
