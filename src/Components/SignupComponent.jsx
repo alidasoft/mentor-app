@@ -10,9 +10,9 @@ const SignupComponent = ({ target_user, timestamp }) => {
     family_name: '',
     email: '',
     password: '',
-    job: '',
+    //job: '',
   })
-  const { name, family_name, email, password, job } = data
+  const { name, family_name, email, password } = data
   const handleInput = (e) => {
     setValue(e.target.value)
   }
@@ -21,7 +21,7 @@ const SignupComponent = ({ target_user, timestamp }) => {
     setData({ ...data, [e.target.name]: e.target.value })
   }
   const handleSubmit = () => {
-    const user = { name, family_name, email, password, job }
+    const user = { name, family_name, email, password }
     console.log(user)
   }
   return (
@@ -53,12 +53,12 @@ const SignupComponent = ({ target_user, timestamp }) => {
         <div className="information-box3">
             <input className="name-input" placeholder="Enter your Password" value={password} name='password' onChange={handleChange} />
         </div>
-        <div className="information-box4">
+        {/* <div className="information-box4">
             <input className="name-input" placeholder="Enter your Job" name='job' value={job} onChange={handleChange} />
-        </div>
+        </div> */}
       </div>
       <div className="btn btn-button">
-        <button className="button-text" onClick={() => Auth.signUp({ username: email, password, attributes: { email, family_name, job } })}>Sign Up</button>
+        <button className="button-text" onClick={() => Auth.signUp({ username: email, password, attributes: { email, family_name, name } })}>Sign Up</button>
       </div>
       <div className="already-have-account">
         <span>{`Already have an account? `}</span>

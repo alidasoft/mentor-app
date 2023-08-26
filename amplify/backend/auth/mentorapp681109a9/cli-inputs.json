@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "mentorapp0dc4a120_identitypool_0dc4a120",
+    "identityPoolName": "mentorapp681109a9_identitypool_681109a9",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "mentor0dc4a120",
-    "userPoolName": "mentorapp0dc4a120_userpool_0dc4a120",
+    "resourceNameTruncated": "mentor681109a9",
+    "userPoolName": "mentorapp681109a9_userpool_681109a9",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -33,23 +33,18 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "mentor0dc4a120_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "mentor681109a9_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "0dc4a120",
-    "resourceName": "mentorapp0dc4a120",
+    "sharedId": "681109a9",
+    "resourceName": "mentorapp681109a9",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
     "usernameAttributes": [
       "email"
     ],
-    "triggers": {
-      "CustomMessage": [
-        "verification-link"
-      ]
-    },
+    "triggers": {},
     "userPoolGroupList": [],
     "serviceName": "Cognito",
-    "verificationBucketName": "mentorapp0dc4a120verificationbucket",
     "usernameCaseSensitive": false,
     "useEnabledMfas": true
   }
