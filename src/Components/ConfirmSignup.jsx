@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Auth } from "aws-amplify";
 import { Hub } from 'aws-amplify';
+import { toast } from 'react-toastify';
 import { Authenticator, AmplifySignUp, AmplifySignOut } from '@aws-amplify/ui-react';
 
 
@@ -9,22 +10,28 @@ const ConfirmSignup = ({ timestamp }) => {
     const navigate = useNavigate()
     const [authenticationCode, setAuthenticationCode] = useState('');
     const [username, setUsername] = useState('');
-    console.log(username)
     const handleConfirm = async () => {
         try {
-            await Auth.confirmSignUp(username, authenticationCode);
-            console.log('code confirmed');
-            navigate('/home')
+            const response = await Auth.confirmSignUp(username, authenticationCode);
+            if (response) {
+                console.log('code confirmed');
+                navigate('/home')
+                toast.success(`Welcome ${response.attributes.name} ${response.attributes.family_name}`)
+            } else {
+                console.log('error')
+                toast.error(`${response.message}`)
+            }
         } catch (err) {
             console.log('error confirming code: ', err);
+            toast.error(`${err.message}`)
         }
     }
     const handleResend = async () => {
         try {
             await Auth.resendSignUp(username);
-            console.log('code resent successfully');
+            toast.success(`code resent successfully`)
         } catch (err) {
-            console.log('error resending code: ', err);
+            toast.error(`${err.message}`)
         }
     }
 

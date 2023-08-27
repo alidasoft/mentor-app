@@ -1,7 +1,8 @@
 import "./App.css";
 import React, { useState, useEffect } from "react"; 
 import { Routes, Route, useNavigationType, useLocation, useNavigate } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import MentorLogin from "./pages/mentor_pages/MentorLogin";
 import MentorSignup from "./pages/mentor_pages/MentorSignup";
 import MenteeLogin from "./pages/mentee_pages/MenteeLogin";
@@ -78,6 +79,7 @@ function App({ signOut }) {
   }, []);
 
     return (
+      <>
         <Routes>
             <Route path="/mentor/signup" element={<MentorSignup target_user={'mentor'} timestamp={timestamp}  />} />
             <Route path="/mentor/login" element={<MentorLogin target_user={'mentor'} timestamp={timestamp} />} />
@@ -90,6 +92,19 @@ function App({ signOut }) {
             <Route path="/" element={<HomeComponent timestamp={timestamp} />} />
             <Route path="/confirm" element={<ConfirmSignup timestamp={timestamp} /> } />
         </Routes>
+        <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={true}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light" 
+            />
+        </>
     );
 }
 

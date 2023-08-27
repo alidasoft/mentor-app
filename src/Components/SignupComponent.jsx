@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Auth } from "aws-amplify";
+import { toast } from 'react-toastify';
 
 import { Authenticator, AmplifySignUp, AmplifySignOut } from '@aws-amplify/ui-react';
 
@@ -32,11 +33,14 @@ const SignupComponent = ({ target_user, timestamp }) => {
       console.log(response)
       if (response) {
         navigate('/confirm')
+        toast.success(`check email for confirmation code`)
       } else {
         console.log('error')
+        toast.error(`${response.message}`)
       }
     } catch (error) {
       console.log(error)
+      toast.error(`${error.message}`)
       
     }
   }

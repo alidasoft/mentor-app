@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Auth } from "aws-amplify";
+import { toast } from 'react-toastify';
 
 
 const LoginComponent = ({ target_user, timestamp }) => {
@@ -20,14 +21,24 @@ const LoginComponent = ({ target_user, timestamp }) => {
   const handleSubmit = async () => {
     const user = {
       username: email,
-      password
+      password,
+      groupName: target_user
     }
+    try {
     const response = await Auth.signIn(user)
-    console.log("response", response)
     setCurrentUser(response)
-    //redirect to the dashboard
-    navigate(`/home`)
-
+    const user_type = response.attributes['custom:groupName']
+    if (user_type === target_user) {
+      navigate('/home')
+      toast.success(`Welcome ${response.attributes.name} ${response.attributes.family_name}`)
+    } else {
+      console.log('error')
+      toast.error('Wrong user type')
+    }
+    } catch (error) {
+      console.log(error)
+      toast.error(`${error.message}`)
+    }
   }
   return (
     <div className="login">
