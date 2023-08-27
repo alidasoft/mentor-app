@@ -8,14 +8,15 @@ import { Authenticator, AmplifySignUp, AmplifySignOut } from '@aws-amplify/ui-re
 const SignupComponent = ({ target_user, timestamp }) => {
   const navigate = useNavigate()
   const [value, setValue] = useState('')
+  console.log("target", target_user)
   const [data, setData] = useState({
     name: '',
     family_name: '',
     email: '',
     password: '',
-    //job: '',
+    groupName: target_user
   })
-  const { name, family_name, email, password } = data
+  const { name, family_name, email, password, groupName } = data
   const handleInput = (e) => {
     setValue(e.target.value)
   }
@@ -27,7 +28,7 @@ const SignupComponent = ({ target_user, timestamp }) => {
     const user = { name, family_name, username: email, password }
     console.log(user)
     try {
-      const response = await Auth.signUp({username: email, password, attributes: {name, family_name}})
+      const response = await Auth.signUp({username: email, password, attributes: {name, family_name, 'custom:groupName': groupName}})
       console.log(response)
       if (response) {
         navigate('/confirm')
@@ -68,9 +69,9 @@ const SignupComponent = ({ target_user, timestamp }) => {
         <div className="information-box3">
             <input className="name-input" placeholder="Enter your Password" value={password} name='password' onChange={handleChange} />
         </div>
-        {/* <div className="information-box4">
-            <input className="name-input" placeholder="Enter your Job" name='job' value={job} onChange={handleChange} />
-        </div> */}
+        <div className="information-box4">
+            <input className="name-input" type='hidden' name='job' value={groupName} onChange={handleChange} />
+        </div>
       </div>
       <div className="btn btn-button">
         <button className="button-text" onClick={handleSubmit}>Sign Up</button>
