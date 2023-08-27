@@ -25,6 +25,14 @@
   width: 266px;
   height: 19px;
 }
+.resend_link {
+  position: absolute;
+  top: 455px;
+  left: 30px;
+  display: inline-block;
+  width: 266px;
+  font-size: larger
+}
 .home {
   position: absolute;
   top: 780px;

@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Auth } from "aws-amplify";
+
+import { Authenticator, AmplifySignUp, AmplifySignOut } from '@aws-amplify/ui-react';
 
 
 const SignupComponent = ({ target_user, timestamp }) => {
+  const navigate = useNavigate()
   const [value, setValue] = useState('')
   const [data, setData] = useState({
     name: '',
@@ -20,9 +23,21 @@ const SignupComponent = ({ target_user, timestamp }) => {
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value })
   }
-  const handleSubmit = () => {
-    const user = { name, family_name, email, password }
+  const handleSubmit = async () => {
+    const user = { name, family_name, username: email, password }
     console.log(user)
+    try {
+      const response = await Auth.signUp({username: email, password, attributes: {name, family_name}})
+      console.log(response)
+      if (response) {
+        navigate('/confirm')
+      } else {
+        console.log('error')
+      }
+    } catch (error) {
+      console.log(error)
+      
+    }
   }
   return (
     <div className="signup">
@@ -58,7 +73,7 @@ const SignupComponent = ({ target_user, timestamp }) => {
         </div> */}
       </div>
       <div className="btn btn-button">
-        <button className="button-text" onClick={() => Auth.signUp({ username: email, password, attributes: { email, family_name, name } })}>Sign Up</button>
+        <button className="button-text" onClick={handleSubmit}>Sign Up</button>
       </div>
       <div className="already-have-account">
         <span>{`Already have an account? `}</span>

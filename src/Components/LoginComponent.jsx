@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Auth } from "aws-amplify";
 
 
 const LoginComponent = ({ target_user, timestamp }) => {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [current_user, setCurrentUser] = useState('')
   const handleInput = (e) => {
     if (e.target.placeholder === 'Enter your Email') {
       setEmail(e.target.value)
@@ -15,12 +17,17 @@ const LoginComponent = ({ target_user, timestamp }) => {
     }
 
   }
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const user = {
-      email,
+      username: email,
       password
     }
-    console.log(user)
+    const response = await Auth.signIn(user)
+    console.log("response", response)
+    setCurrentUser(response)
+    //redirect to the dashboard
+    navigate(`/home`)
+
   }
   return (
     <div className="login">
@@ -50,7 +57,7 @@ const LoginComponent = ({ target_user, timestamp }) => {
       </div>
 
       <div className="btn btn-button">
-        <button className="button-text" onClick={() => Auth.signIn(email, password)}>Login</button>
+        <button className="button-text" onClick={handleSubmit}>Login</button>
       </div>
       <div className="dont-have-account">
         <span>{`Don't have an account ? `}</span>
