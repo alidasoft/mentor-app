@@ -1,0 +1,10 @@
+{
+  "resourceName": "profile",
+  "tableName": "mentor",
+  "partitionKey": {
+    "fieldName": "email",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

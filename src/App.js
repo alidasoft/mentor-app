@@ -9,15 +9,18 @@ import MenteeLogin from "./pages/mentee_pages/MenteeLogin";
 import MenteeSignup from "./pages/mentee_pages/MenteeSignup";
 import AdminLogin from "./pages/admin_pages/AdminLogin";
 import AdminSignup from "./pages/admin_pages/AdminSignup";
-import Header from "./Components/Header";
+import MentorProfile from "./Components/MentorProfile";
 import ConfirmSignup from "./Components/ConfirmSignup";
 import UnderConstruction from "./Components/UnderConstruction";
 import EditProfile from "./pages/edit-profile/EditProfile";
 import "@aws-amplify/ui-react/styles.css";
+import { Auth, Hub, API } from "aws-amplify";
 
 import HomeComponent from "./Components/HomeComponent";
 
 function App({ signOut }) {
+  const [user, setUser] = useState(null);
+  const [profile, setProfile] = useState(null)
   const Navigate = useNavigate();
   const location = useLocation();
   const action = useNavigationType();
@@ -28,38 +31,43 @@ function App({ signOut }) {
     }
   }, [action, pathname]);
 
-  // useEffect(() => {
-  //   const getUser = async () => {
-  //     try {
-  //       const user = await Auth.currentAuthenticatedUser();
-  //       setUser(user);
-  //     } catch (error) {
-  //       setUser(null);
-  //     }
-  //   };
-  //   getUser();
-  //   const listener = (data) => {
-  //     switch (data.payload.event) {
-  //       case "signIn":
-  //         return getUser();
-  //       case "signOut":
-  //         return setUser(null);
-  //       default:
-  //         return;
-  //     } 
-  //   };
-  //   Hub.listen("auth", listener);
-  //   return () => Hub.remove("auth", listener);
-  // }, []);
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const user = await Auth.currentAuthenticatedUser();
+        setUser(user.attributes);
+      } catch (error) {
+        setUser(null);
+      }
+    };
+    getUser();
+    const listener = (data) => {
+      switch (data.payload.event) {
+        case "signIn":
+          return getUser();
+        case "signOut":
+          return setUser(null);
+        default:
+          return;
+      } 
+    };
+    Hub.listen("auth", listener);
+    return () => Hub.remove("auth", listener);
+  }, []);
+  //get profile from /profiles api
+  useEffect(() => {
+    const getProfile = async () => {
+      try {
+        const profile = await API.get("profiles", "/profiles");
+        setProfile(profile);
+      } catch (error) {
+        console.log("error in api get call", error);
+      }
+    };
+    getProfile();
+  }, []);
 
-  // useEffect(() => {
-  //   if (user) {
-  //     Navigate("/home");
-  //   } else {
-  //     Navigate("/");
-  //   }
-  // }, [user]);
-  
+console.log("user => ", user)
   const getFormattedTime = () => {
     const date = new Date();
     const time = date.toLocaleTimeString();
@@ -88,9 +96,10 @@ function App({ signOut }) {
             <Route path="/admin/signup" element={<AdminSignup target_user={`admin`} timestamp={timestamp} />} />
             <Route path="/admin/login" element={<AdminLogin target_user={'admin'} timestamp={timestamp} />} />
             <Route path="/edit/profile" element={ <EditProfile timestamp={timestamp} />} />
-            <Route path="/home" element={<UnderConstruction timestamp={timestamp} />} />
+            <Route path="/home" element={<UnderConstruction timestamp={timestamp} user={user} />} />
             <Route path="/" element={<HomeComponent timestamp={timestamp} />} />
             <Route path="/confirm" element={<ConfirmSignup timestamp={timestamp} /> } />
+            <Route path="/mentor/profile" element={<MentorProfile timestamp={timestamp} user={user}  />} />
         </Routes>
         <ToastContainer
               position="top-center"

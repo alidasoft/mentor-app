@@ -1,4 +1,20 @@
 {
+  "api": {
+    "profiles": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "profile"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "auth": {
     "mentorapp681109a9": {
       "customAuth": false,
@@ -37,6 +53,25 @@
     },
     "mentorappd2590ab3CustomMessage": {
       "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "profile": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "profile"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
@@ -121,6 +156,28 @@
           "resourceName": "mentorappd2590ab3CustomMessage"
         }
       ]
+    },
+    "AMPLIFY_function_profile_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "profile"
+        }
+      ]
+    },
+    "AMPLIFY_function_profile_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "profile"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "profile": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
     }
   }
 }

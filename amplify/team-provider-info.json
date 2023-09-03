@@ -10,7 +10,8 @@
       "StackName": "amplify-amplifye8082b50be624-staging-141739",
       "StackId": "arn:aws:cloudformation:us-east-1:540546288770:stack/amplify-amplifye8082b50be624-staging-141739/d0fd1530-41bf-11ee-955f-1215a9852701",
       "AmplifyAppId": "d3cukazce5musz",
-      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-amplifye8082b50be624-staging-141739-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-amplifye8082b50be624-staging-141739-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-amplifye8082b50be624-staging-141739-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "auth": {
@@ -31,7 +32,17 @@
           "EMAILMESSAGE": "verify",
           "deploymentBucketName": "amplify-amplifye8082b50be624-staging-141739-deployment",
           "s3Key": "amplify-builds/mentorapp0dc4a120CustomMessage-31674c594e79396e4451-build.zip"
+        },
+        "profile": {
+          "deploymentBucketName": "amplify-amplifye8082b50be624-staging-141739-deployment",
+          "s3Key": "amplify-builds/profile-6258664c3553716d5a35-build.zip"
         }
+      },
+      "api": {
+        "profiles": {}
+      },
+      "storage": {
+        "profile": {}
       }
     }
   }
