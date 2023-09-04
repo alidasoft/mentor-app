@@ -4,6 +4,7 @@ import { Routes, Route, useNavigationType, useLocation, useNavigate } from "reac
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MentorLogin from "./pages/mentor_pages/MentorLogin";
+import Protected from "./Components/Protected";
 import MentorSignup from "./pages/mentor_pages/MentorSignup";
 import MenteeLogin from "./pages/mentee_pages/MenteeLogin";
 import MenteeSignup from "./pages/mentee_pages/MenteeSignup";
@@ -21,6 +22,7 @@ import HomeComponent from "./Components/HomeComponent";
 function App({ signOut }) {
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null)
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const Navigate = useNavigate();
   const location = useLocation();
   const action = useNavigationType();
@@ -36,8 +38,10 @@ function App({ signOut }) {
       try {
         const user = await Auth.currentAuthenticatedUser();
         setUser(user.attributes);
+        setIsAuthenticated(true);
       } catch (error) {
         setUser(null);
+        setIsAuthenticated(false);
       }
     };
     getUser();
@@ -46,6 +50,7 @@ function App({ signOut }) {
         case "signIn":
           return getUser();
         case "signOut":
+          setIsAuthenticated(false);
           return setUser(null);
         default:
           return;
@@ -56,27 +61,24 @@ function App({ signOut }) {
   }, []);
   //get profile from /profiles api
   useEffect(() => {
-    const getProfile = async () => {
-      try {
-        const profile = await API.get("profile", "/mentor", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${(await Auth.currentSession())
-              .getIdToken()
-              .getJwtToken()}`,
-          },
-          querryStringParameters: {
-            email: user.email,
-          },
-        });
-        console.log("profile => ", profile);
-        //setProfile(profile);
-      } catch (error) {
-        console.log("error in api get call", error);
-      }
-    };
-    getProfile();
-  }, []);
+    API.get("profile", "/mentors/email", {
+      Headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "*",
+      },
+      queryStringParameters: {
+        email: user?.email,
+      },
+    })
+      .then((response) => {
+        console.log("response received from API: ", response);
+       // setProfile(response);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  }, [user]);
 
   const getFormattedTime = () => {
     const date = new Date();
@@ -106,7 +108,11 @@ function App({ signOut }) {
             <Route path="/admin/signup" element={<AdminSignup target_user={`admin`} timestamp={timestamp} />} />
             <Route path="/admin/login" element={<AdminLogin target_user={'admin'} timestamp={timestamp} />} />
             <Route path="/edit/profile" element={ <EditProfile timestamp={timestamp} />} />
-            <Route path="/home" element={<UnderConstruction timestamp={timestamp} user={user} />} />
+            <Route path="/home" element={
+              <Protected isAuthenticated={isAuthenticated} user={user} timestamp={timestamp}>
+            <UnderConstruction timestamp={timestamp} user={user} />
+              </Protected>
+            } />
             <Route path="/" element={<HomeComponent timestamp={timestamp} />} />
             <Route path="/confirm" element={<ConfirmSignup timestamp={timestamp} /> } />
             <Route path="/mentor/profile" element={<MentorProfile timestamp={timestamp} user={user}  />} />
