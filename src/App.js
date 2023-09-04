@@ -58,8 +58,19 @@ function App({ signOut }) {
   useEffect(() => {
     const getProfile = async () => {
       try {
-        const profile = await API.get("profile", "/profiles", {});
-        setProfile(profile);
+        const profile = await API.get("profile", "/mentor", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${(await Auth.currentSession())
+              .getIdToken()
+              .getJwtToken()}`,
+          },
+          querryStringParameters: {
+            email: user.email,
+          },
+        });
+        console.log("profile => ", profile);
+        //setProfile(profile);
       } catch (error) {
         console.log("error in api get call", error);
       }
@@ -67,7 +78,6 @@ function App({ signOut }) {
     getProfile();
   }, []);
 
-console.log("user => ", user)
   const getFormattedTime = () => {
     const date = new Date();
     const time = date.toLocaleTimeString();

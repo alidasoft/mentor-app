@@ -1,5 +1,28 @@
 {
-  "api": {},
+  "api": {
+    "profile": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "profileLambda"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "menteesLambda"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "auth": {
     "mentorapp681109a9": {
       "customAuth": false,
@@ -31,6 +54,25 @@
     }
   },
   "function": {
+    "menteesLambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "profile"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "mentorapp0dc4a120CustomMessage": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -40,9 +82,44 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "profileLambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "profile"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
+    "AMPLIFY_function_menteesLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "menteesLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_menteesLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "menteesLambda"
+        }
+      ]
+    },
     "AMPLIFY_function_mentorapp0dc4a120CustomMessage_EMAILMESSAGE": {
       "usedBy": [
         {
@@ -120,6 +197,22 @@
         {
           "category": "function",
           "resourceName": "mentorappd2590ab3CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_profileLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "profileLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_profileLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "profileLambda"
         }
       ]
     }

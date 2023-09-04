@@ -32,9 +32,20 @@
           "EMAILMESSAGE": "verify",
           "deploymentBucketName": "amplify-amplifye8082b50be624-staging-141739-deployment",
           "s3Key": "amplify-builds/mentorapp0dc4a120CustomMessage-31674c594e79396e4451-build.zip"
+        },
+        "profileLambda": {
+          "deploymentBucketName": "amplify-amplifye8082b50be624-staging-141739-deployment",
+          "s3Key": "amplify-builds/profileLambda-3345436e677952375032-build.zip"
+        },
+        "menteesLambda": {
+          "deploymentBucketName": "amplify-amplifye8082b50be624-staging-141739-deployment",
+          "s3Key": "amplify-builds/menteesLambda-744a6236766c51787545-build.zip"
         }
       },
       "storage": {
+        "profile": {}
+      },
+      "api": {
         "profile": {}
       }
     }
