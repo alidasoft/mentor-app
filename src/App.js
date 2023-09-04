@@ -58,7 +58,7 @@ function App({ signOut }) {
   useEffect(() => {
     const getProfile = async () => {
       try {
-        const profile = await API.get("profiles", "/profiles");
+        const profile = await API.get("profile", "/profiles", {});
         setProfile(profile);
       } catch (error) {
         console.log("error in api get call", error);

@@ -1,6 +1,6 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
-    "profiles": {
+    "profile": {
       "ApiId": "string",
       "ApiName": "string",
       "RootUrl": "string"
@@ -32,7 +32,7 @@ export type AmplifyDependentResourcesAttributes = {
       "Name": "string",
       "Region": "string"
     },
-    "profile": {
+    "profileLambda": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",

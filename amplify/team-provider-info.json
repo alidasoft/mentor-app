@@ -32,14 +32,7 @@
           "EMAILMESSAGE": "verify",
           "deploymentBucketName": "amplify-amplifye8082b50be624-staging-141739-deployment",
           "s3Key": "amplify-builds/mentorapp0dc4a120CustomMessage-31674c594e79396e4451-build.zip"
-        },
-        "profile": {
-          "deploymentBucketName": "amplify-amplifye8082b50be624-staging-141739-deployment",
-          "s3Key": "amplify-builds/profile-6258664c3553716d5a35-build.zip"
         }
-      },
-      "api": {
-        "profiles": {}
       },
       "storage": {
         "profile": {}
