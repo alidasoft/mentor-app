@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 const MentorProfile = ({ timestamp, user }) => {
   const navigate = useNavigate();
   const [countries, setCountries] = useState([]);
+  const [currentUniversity, setCurrentUniversity] = useState('');
   const [selectedCountry, setSelectedCountry] = useState('');
   const [cities, setCities] = useState([]);
   const [collegeMajor, setCollegeMajor] = useState('');
@@ -21,9 +22,12 @@ const MentorProfile = ({ timestamp, user }) => {
     current_job: '',
     college_major: '',
     major: '',
+    university: '',
+    studyMajor: '',
+    career_goal: '',
   });
 
-  const { name, surname, email, location: { city }, current_job, college_major, major } = data;
+  const { name, surname, email, university, career_goal, studyMajor, location: { city }, current_job, college_major, major } = data;
 
   const handleInput = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -46,6 +50,9 @@ const MentorProfile = ({ timestamp, user }) => {
         current_job: '',
         college_major: '',
         major: '',
+        university: '',
+        studyMajor: '',
+        career_goal: '',
       });
     }
   }, [user]);
@@ -100,8 +107,20 @@ const MentorProfile = ({ timestamp, user }) => {
       setData({ ...data, major: "none" });
     }
   };
+  const handleCurrentUniversity = (e) => {
+    const value = e.target.value;
+    setCurrentUniversity(value);
+    console.log("currentUniversity", currentUniversity)
 
-  const handleSubmit = () => {
+    // Set major to "none" if collegeMajor is "no"
+    if (value === "no") {
+      setData({ ...data, university: "none" });
+    }
+  };
+
+  const handleSubmit = (user) => {
+    const user_type = user ? user['custom:groupName'] : ''
+    if (user_type === 'mentor') {
     const user_profile = { name, surname, email, location: {country: selectedCountry, city}, current_job, college_major: collegeMajor, major };
     if ( !user_profile.name || !user_profile.surname || !user_profile.email || !user_profile.location.country || !user_profile.location.city || !user_profile.current_job ) {
       toast.error("Please fill in all required fields");
@@ -123,12 +142,38 @@ const MentorProfile = ({ timestamp, user }) => {
         .catch((error) => {
             console.log("error from post", error);
         })
+    } else {
+      const user_profile = { name, surname, email, location: {country: selectedCountry, city}, current_job, college_major: collegeMajor, major, university, studyMajor, career_goal };
+      if ( !user_profile.name || !user_profile.surname || !user_profile.email || !user_profile.location.country || !user_profile.location.city ) {
+        toast.error("Please fill in all required fields");
+        return;
+      }
+      API.post('profile', '/mentees', {
+        body: user_profile,
+        })
+        .then((response) => {
+            console.log("response from post", response);
+            if (response.success) {
+                toast.success("Profile updated successfully");
+                navigate('/home');
+            } else {
+                toast.error("Error updating profile");
+            }
+        }
+        )
+        .catch((error) => {
+            console.log("error from post", error);
+        }
+        )
+    }
+
+
   };
 
   return (
-    <div className="dashboard">
-      <Header timestamp={timestamp} />
-      <div className="dashboard-item" >
+    <div { ...user && user['custom:groupName'] === 'mentee' ? { className: "mentee-dashboard" } : { className: "dashboard" } }>
+      <Header timestamp={timestamp} user={user} />
+      <div { ...user && user['custom:groupName'] === 'mentee' ? { className: "mentee-dashboard-item" } : { className: "dashboard-item" } }>
       <div className="information-boxe">
         <div className="information-box">
           <input className="profile-input" placeholder="Enter your Name" value={name} name="name" onChange={handleInput} disabled />
@@ -174,12 +219,38 @@ const MentorProfile = ({ timestamp, user }) => {
                     <input className="name-input" placeholder="Enter your college major" name="major" value={major} onChange={handleInput} />
                   </div>
                   ) : ''}
+        {user && user['custom:groupName'] === 'mentee' ? ( 
+          <>
+        <div className="information-box8">
+          <select className="name-input" placeholder="Are you currently enrolled in a university" name="currentUniversity" value={currentUniversity} onChange={handleCurrentUniversity}>
+              <option value="">Currently in university</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+          </select>
+        </div>
+        {currentUniversity === 'yes' ? (
+                  <>
+                    <div className="information-box9">
+                      <input className="name-input" placeholder="Enter your university" name="university" value={university} onChange={handleInput} />
+                    </div>
+                    <div className="information-box10">
+                      <input className="name-input" placeholder="Enter your university" name="studyMajor" value={studyMajor} onChange={handleInput} />
+                    </div>
+                    <div className="information-box11">
+                      <input className="name-input" placeholder="Enter your university" name="career_goal" value={career_goal} onChange={handleInput} />
+                    </div>
+                  </>
+                  ) : ''}
+        </>
+
+        
+        ) : ''}
       </div>
       <div className="btn1 btn-button">
         <button className="button-text" onClick={handleSubmit}>Update Profile</button>
       </div>
-      <div className="btn2 btn-button">
-        <button className="button-text" onClick={handleSubmit}>Update</button>
+      <div { ...user && user['custom:groupName'] === 'mentee' ? { className: "mentee-btn2 btn-button " } : { className: "btn2 btn-button" } }>
+        <button className="button-text" onClick={()=>handleSubmit(user)}>Upgrade</button>
       </div>
       </div>
     </div>

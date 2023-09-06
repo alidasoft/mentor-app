@@ -118,7 +118,16 @@
   width: 375px;
   height: 1000px;
   overflow: hidden;
-
+}
+.mentee-dashboard {
+  position: relative;
+  border-radius: 15px;
+  background-color: whitesmoke;
+  transform: translate(-50%);
+  left: 50%;
+  width: 375px;
+  height: 1300px;
+  overflow: hidden;
 }
 
 .dashboard-child {
@@ -217,6 +226,15 @@
   width: 380px;
   height: 780px;
 }
+.mentee-dashboard-item {
+    position: absolute;
+    top: 246px;
+    left: 0;
+    border-radius: 30px;
+    background-color: #e51e1e;
+    width: 380px;
+    height: 1280px;
+}
 
 .information-boxe,
 .information-box3,
@@ -241,6 +259,22 @@
   position: absolute;
   top: 535px;
 }
+.information-box8 {
+  position: absolute;
+  top: 605px;
+}
+.information-box9 {
+  position: absolute;
+  top: 685px;
+}
+.information-box10 {
+  position: absolute;
+  top: 765px;
+}
+.information-box11 {
+  position: absolute;
+  top: 845px;
+}
 
 
 
@@ -259,6 +293,11 @@
 .btn2 {
   position: absolute;
   top: 700px;
+  left: 94px;
+}
+.mentee-btn2 {
+  position: absolute;
+  top: 1000px;
   left: 94px;
 }
 

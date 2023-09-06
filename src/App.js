@@ -116,6 +116,7 @@ function App({ signOut }) {
             <Route path="/" element={<HomeComponent timestamp={timestamp} />} />
             <Route path="/confirm" element={<ConfirmSignup timestamp={timestamp} /> } />
             <Route path="/mentor/profile" element={<MentorProfile timestamp={timestamp} user={user}  />} />
+            <Route path="/mentee/profile" element={<MentorProfile timestamp={timestamp} user={user}  />} />
         </Routes>
         <ToastContainer
               position="top-center"

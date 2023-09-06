@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
 
-const Header = ({ timestamp, target_user }) => {
+const Header = ({ timestamp, user }) => {
     const fileInputRef = useRef(null)
     const [image, setImage] = useState(null)
-
+    console.log("user", user)
     const handleImage = (e) => {
         console.log('file');
         const file = e.target.files[0]; 
@@ -38,7 +38,7 @@ const Header = ({ timestamp, target_user }) => {
             <div className="welcome-container">
                 <span className="welcome-container1">
                     <span className="welcome">{`Welcome `}</span>
-                    <span className="user-name">Dauda BARY</span>
+                    <span className="user-name">{user ? user.name + ' ' + user.family_name  : ''}</span>
                 </span>
             </div>
         </div>
