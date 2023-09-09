@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Auth } from "aws-amplify";
 
 const PageEnConstruction = ({ timestamp, signOut, user }) => {
+  
   const user_type = user ? user['custom:groupName'] : ''
   console.log("user_type", user_type)
   const navigate = useNavigate()

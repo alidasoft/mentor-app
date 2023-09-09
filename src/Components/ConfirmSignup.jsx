@@ -11,21 +11,30 @@ const ConfirmSignup = ({ timestamp }) => {
     const [authenticationCode, setAuthenticationCode] = useState('');
     const [username, setUsername] = useState('');
     const handleConfirm = async () => {
-        try {
-            const response = await Auth.confirmSignUp(username, authenticationCode);
-            if (response) {
-                console.log('code confirmed');
+      try {
+          const response = await Auth.confirmSignUp(username, authenticationCode);
+          console.log("response", response)
+          if (response === 'SUCCESS') {
+            const user = await Auth.currentAuthenticatedUser()
+            console.log("user confirmed", user)
+            if (user) {
+              const user_type = user['custom:groupName']
+              console.log("user_type", user_type)
                 navigate('/home')
-                toast.success(`Welcome ${response.attributes.name} ${response.attributes.family_name}`)
             } else {
-                console.log('error')
-                toast.error(`${response.message}`)
+              console.log('error')
+              toast.error('Confirmation failed')
             }
-        } catch (err) {
-            console.log('error confirming code: ', err);
-            toast.error(`${err.message}`)
-        }
-    }
+          } else {
+              console.log('error');
+              toast.error('Confirmation failed');
+          }
+      } catch (err) {
+          console.log('error confirming code: ', err);
+          toast.error(err.message);
+      }
+  };
+  
     const handleResend = async () => {
         try {
             await Auth.resendSignUp(username);
@@ -35,17 +44,6 @@ const ConfirmSignup = ({ timestamp }) => {
         }
     }
 
-    function listenToAutoSignInEvent() {
-    Hub.listen('auth', ({ payload }) => {
-        const { event } = payload;
-        if (event === 'autoSignIn') {
-        const user = payload.data;
-        // assign user
-        } else if (event === 'autoSignIn_failure') {
-        // redirect to sign in page
-        }
-    })
-    }
   return (
     <div className="signup">
       <div className="ellipse" />

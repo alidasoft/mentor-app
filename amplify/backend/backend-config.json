@@ -24,7 +24,7 @@
     }
   },
   "auth": {
-    "mentorapp681109a9": {
+    "mentorapp6c0c0506": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -51,6 +51,22 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    },
+    "userPoolGroups": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "mentorapp6c0c0506"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito-UserPool-Groups"
     }
   },
   "function": {
@@ -120,30 +136,6 @@
         }
       ]
     },
-    "AMPLIFY_function_mentorapp0dc4a120CustomMessage_EMAILMESSAGE": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "mentorapp0dc4a120CustomMessage"
-        }
-      ]
-    },
-    "AMPLIFY_function_mentorapp0dc4a120CustomMessage_EMAILSUBJECT": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "mentorapp0dc4a120CustomMessage"
-        }
-      ]
-    },
-    "AMPLIFY_function_mentorapp0dc4a120CustomMessage_REDIRECTURL": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "mentorapp0dc4a120CustomMessage"
-        }
-      ]
-    },
     "AMPLIFY_function_mentorapp0dc4a120CustomMessage_deploymentBucketName": {
       "usedBy": [
         {
@@ -157,30 +149,6 @@
         {
           "category": "function",
           "resourceName": "mentorapp0dc4a120CustomMessage"
-        }
-      ]
-    },
-    "AMPLIFY_function_mentorappd2590ab3CustomMessage_EMAILMESSAGE": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "mentorappd2590ab3CustomMessage"
-        }
-      ]
-    },
-    "AMPLIFY_function_mentorappd2590ab3CustomMessage_EMAILSUBJECT": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "mentorappd2590ab3CustomMessage"
-        }
-      ]
-    },
-    "AMPLIFY_function_mentorappd2590ab3CustomMessage_REDIRECTURL": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "mentorappd2590ab3CustomMessage"
         }
       ]
     },

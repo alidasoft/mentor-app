@@ -109,9 +109,9 @@ function App({ signOut }) {
             <Route path="/admin/login" element={<AdminLogin target_user={'admin'} timestamp={timestamp} />} />
             <Route path="/edit/profile" element={ <EditProfile timestamp={timestamp} />} />
             <Route path="/home" element={
-              <Protected isAuthenticated={isAuthenticated} user={user} timestamp={timestamp}>
+              // <Protected isAuthenticated={isAuthenticated} user={user} timestamp={timestamp}>
             <UnderConstruction timestamp={timestamp} user={user} />
-              </Protected>
+              // </Protected>
             } />
             <Route path="/" element={<HomeComponent timestamp={timestamp} />} />
             <Route path="/confirm" element={<ConfirmSignup timestamp={timestamp} /> } />
