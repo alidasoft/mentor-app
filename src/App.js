@@ -60,25 +60,28 @@ function App({ signOut }) {
     return () => Hub.remove("auth", listener);
   }, []);
   //get profile from /profiles api
-  useEffect(() => {
-    API.get("profile", "/mentors/email", {
-      Headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "*",
-      },
-      queryStringParameters: {
-        email: user?.email,
-      },
-    })
-      .then((response) => {
-        console.log("response received from API: ", response);
-       // setProfile(response);
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
-  }, [user]);
+  // useEffect(() => {
+  //   const getProfile = async () => {
+  //     try {
+  //       const response = await API.get("profileRest", "/mentor/1");
+  //         console.log(response);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }; 
+  //   getProfile();
+  // }, [user]);
+const getProfile = async () => {
+  try {
+    console.log("user email", user?.email);
+    const response = await API.get("profileAPI", "/mentee/object/" + user?.email);
+      console.log("response from get method", response);
+  } catch (error) {
+    console.log(error);
+  }
+};
+getProfile();
+
 
   const getFormattedTime = () => {
     const date = new Date();

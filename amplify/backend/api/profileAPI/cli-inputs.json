@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/mentor": {
+      "name": "/mentor",
+      "lambdaFunction": "mentorLambda",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/mentee": {
+      "name": "/mentee",
+      "lambdaFunction": "menteeLambda",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

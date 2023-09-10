@@ -71,10 +71,6 @@
         "userPoolGroups": {}
       },
       "function": {
-        "menteesLambda": {
-          "deploymentBucketName": "amplify-mentorapp-prod-120658-deployment",
-          "s3Key": "amplify-builds/menteesLambda-4364485441386e716967-build.zip"
-        },
         "mentorapp0dc4a120CustomMessage": {
           "deploymentBucketName": "amplify-mentorapp-prod-120658-deployment",
           "s3Key": "amplify-builds/mentorapp0dc4a120CustomMessage-31674c594e79396e4451-build.zip"
@@ -83,17 +79,27 @@
           "deploymentBucketName": "amplify-mentorapp-prod-120658-deployment",
           "s3Key": "amplify-builds/mentorappd2590ab3CustomMessage-776c434d6c352b544b68-build.zip"
         },
-        "profileLambda": {
+        "profile": {},
+        "awsMentorLambda": {
           "deploymentBucketName": "amplify-mentorapp-prod-120658-deployment",
-          "s3Key": "amplify-builds/profileLambda-3345436e677952375032-build.zip"
+          "s3Key": "amplify-builds/awsMentorLambda-564c7444323344564532-build.zip"
         },
-        "profile": {}
-      },
-      "api": {
-        "profile": {}
+        "mentorLambda": {
+          "deploymentBucketName": "amplify-mentorapp-prod-120658-deployment",
+          "s3Key": "amplify-builds/mentorLambda-6d6f626c7672364a334f-build.zip"
+        },
+        "menteeLambda": {
+          "deploymentBucketName": "amplify-mentorapp-prod-120658-deployment",
+          "s3Key": "amplify-builds/menteeLambda-6972623838616d7a3161-build.zip"
+        }
       },
       "storage": {
-        "profile": {}
+        "profile": {},
+        "mentorTable": {},
+        "menteeTable": {}
+      },
+      "api": {
+        "profileAPI": {}
       }
     }
   }

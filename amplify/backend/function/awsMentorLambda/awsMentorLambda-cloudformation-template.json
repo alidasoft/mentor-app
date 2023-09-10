@@ -16,13 +16,13 @@
     "s3Key": {
       "Type": "String"
     },
-    "storageprofileName": {
+    "storagementorTableName": {
       "Type": "String",
-      "Default": "storageprofileName"
+      "Default": "storagementorTableName"
     },
-    "storageprofileArn": {
+    "storagementorTableArn": {
       "Type": "String",
-      "Default": "storageprofileArn"
+      "Default": "storagementorTableArn"
     }
   },
   "Conditions": {
@@ -55,12 +55,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "profileLambda",
+            "awsMentorLambda",
             {
               "Fn::Join": [
                 "",
                 [
-                  "profileLambda",
+                  "awsMentorLambda",
                   "-",
                   {
                     "Ref": "env"
@@ -97,12 +97,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "mentorappLambdaRole6d652e81",
+            "mentorappLambdaRoleccbe012a",
             {
               "Fn::Join": [
                 "",
                 [
-                  "mentorappLambdaRole6d652e81",
+                  "mentorappLambdaRoleccbe012a",
                   "-",
                   {
                     "Ref": "env"
@@ -182,14 +182,14 @@
               ],
               "Resource": [
                 {
-                  "Ref": "storageprofileArn"
+                  "Ref": "storagementorTableArn"
                 },
                 {
                   "Fn::Join": [
                     "/",
                     [
                       {
-                        "Ref": "storageprofileArn"
+                        "Ref": "storagementorTableArn"
                       },
                       "index/*"
                     ]

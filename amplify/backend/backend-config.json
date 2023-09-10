@@ -1,6 +1,6 @@
 {
   "api": {
-    "profile": {
+    "profileAPI": {
       "dependsOn": [
         {
           "attributes": [
@@ -8,7 +8,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "profileLambda"
+          "resourceName": "mentorLambda"
         },
         {
           "attributes": [
@@ -16,7 +16,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "menteesLambda"
+          "resourceName": "menteeLambda"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -70,7 +70,7 @@
     }
   },
   "function": {
-    "menteesLambda": {
+    "awsMentorLambda": {
       "build": true,
       "dependsOn": [
         {
@@ -83,7 +83,45 @@
             "Arn"
           ],
           "category": "storage",
-          "resourceName": "profile"
+          "resourceName": "mentorTable"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "menteeLambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "menteeTable"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "mentorLambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "mentorTable"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -98,41 +136,54 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
-    },
-    "profileLambda": {
-      "build": true,
-      "dependsOn": [
-        {
-          "attributeEnvMap": {
-            "Arn": "TABLE_ARN",
-            "Name": "TABLE_NAME"
-          },
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "storage",
-          "resourceName": "profile"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
     }
   },
   "parameters": {
-    "AMPLIFY_function_menteesLambda_deploymentBucketName": {
+    "AMPLIFY_function_awsMentorLambda_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "menteesLambda"
+          "resourceName": "awsMentorLambda"
         }
       ]
     },
-    "AMPLIFY_function_menteesLambda_s3Key": {
+    "AMPLIFY_function_awsMentorLambda_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "menteesLambda"
+          "resourceName": "awsMentorLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_menteeLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "menteeLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_menteeLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "menteeLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_mentorLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "mentorLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_mentorLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "mentorLambda"
         }
       ]
     },
@@ -167,25 +218,17 @@
           "resourceName": "mentorappd2590ab3CustomMessage"
         }
       ]
-    },
-    "AMPLIFY_function_profileLambda_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "profileLambda"
-        }
-      ]
-    },
-    "AMPLIFY_function_profileLambda_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "profileLambda"
-        }
-      ]
     }
   },
   "storage": {
+    "menteeTable": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "mentorTable": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
     "profile": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"

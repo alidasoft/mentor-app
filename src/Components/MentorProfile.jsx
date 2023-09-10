@@ -118,7 +118,7 @@ const MentorProfile = ({ timestamp, user }) => {
     }
   };
 
-  const handleSubmit = (user) => {
+  const handleSubmit =  async (user) => {
     const user_type = user ? user['custom:groupName'] : ''
     if (user_type === 'mentor') {
     const user_profile = { name, surname, email, location: {country: selectedCountry, city}, current_job, college_major: collegeMajor, major };
@@ -127,47 +127,34 @@ const MentorProfile = ({ timestamp, user }) => {
       return;
     }
 
-    API.post('profile', '/mentors', {
-        body: user_profile,
-        })
-        .then((response) => {
-            console.log("response from post", response);
-            if (response.success) {
-                toast.success("Profile updated successfully");
-                navigate('/home');
-            } else {
-                toast.error("Error updating profile");
-            }
-        })
-        .catch((error) => {
-            console.log("error from post", error);
-        })
+    const response = await API.post('profileAPI', '/mentor/email', {
+      body: user_profile,
+    });
+    console.log("response from post", response);
+    if (response.success) {
+      toast.success("Profile updated successfully");
+      navigate('/home');
     } else {
+      toast.error("Error updating profile");
+    }
+    }
+     else {
       const user_profile = { name, surname, email, location: {country: selectedCountry, city}, current_job, college_major: collegeMajor, major, university, studyMajor, career_goal };
       if ( !user_profile.name || !user_profile.surname || !user_profile.email || !user_profile.location.country || !user_profile.location.city ) {
         toast.error("Please fill in all required fields");
         return;
       }
-      API.post('profile', '/mentees', {
-        body: user_profile,
-        })
-        .then((response) => {
-            console.log("response from post", response);
-            if (response.success) {
-                toast.success("Profile updated successfully");
-                navigate('/home');
-            } else {
-                toast.error("Error updating profile");
-            }
-        }
-        )
-        .catch((error) => {
-            console.log("error from post", error);
-        }
-        )
+     const response = await API.post('profileAPI', '/mentee', {
+          body: user_profile,
+          })
+          console.log("response from post", response);
+          if (response.success) {
+              toast.success("Profile updated successfully");
+              navigate('/home');
+          } else {
+              toast.error("Error updating profile");
+          }
     }
-
-
   };
 
   return (

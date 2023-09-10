@@ -1,0 +1,10 @@
+{
+  "resourceName": "menteeTable",
+  "tableName": "menteeTable",
+  "partitionKey": {
+    "fieldName": "email",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
