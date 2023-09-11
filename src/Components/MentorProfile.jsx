@@ -10,6 +10,7 @@ const MentorProfile = ({ timestamp, user }) => {
   const [currentUniversity, setCurrentUniversity] = useState('');
   const [selectedCountry, setSelectedCountry] = useState('');
   const [cities, setCities] = useState([]);
+  const [profile, setProfile] = useState({});
   const [collegeMajor, setCollegeMajor] = useState('');
   const [data, setData] = useState({
     name: '',
@@ -25,9 +26,10 @@ const MentorProfile = ({ timestamp, user }) => {
     university: '',
     studyMajor: '',
     career_goal: '',
+    image: '',
   });
 
-  const { name, surname, email, university, career_goal, studyMajor, location: { city }, current_job, college_major, major } = data;
+  const { name, surname, email, university, career_goal, studyMajor, location: { city }, current_job, college_major, major, image } = data;
 
   const handleInput = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -35,7 +37,16 @@ const MentorProfile = ({ timestamp, user }) => {
   const handleCityChange = (e) => {
     setData({ ...data, location: { ...data.location, city: e.target.value } });
   };
-
+useEffect(() => {
+    if (user) {
+      API.get('profileAPI', '/mentee/object/' + user.email)
+        .then((response) => {
+          console.log("response from get", response);
+          setProfile(response);
+        })
+        .catch((error) => console.error('Error fetching profile:', error));
+    }
+  }, [user]);
   // Use useEffect to set initial values based on the user prop
   useEffect(() => {
     if (user) {
@@ -44,18 +55,20 @@ const MentorProfile = ({ timestamp, user }) => {
         surname: user.family_name || '',
         email: user.email || '',
         location: {
-            country: '',
-            city: '',
+            country: profile?.location?.country || '',
+            city: profile?.location?.city || '',
         },
-        current_job: '',
-        college_major: '',
-        major: '',
-        university: '',
-        studyMajor: '',
-        career_goal: '',
+        current_job: profile?.current_job || '',
+        college_major: profile?.college_major || '',
+        major: profile?.major || '',
+        university: profile?.university || '',
+        studyMajor: profile?.studyMajor || '',
+        career_goal: profile?.career_goal || '',
+        image: profile?.image || '',
       });
     }
-  }, [user]);
+    console.log("running ")
+  }, [profile]);
 
   useEffect(() => {
     // Fetch a list of countries with their major cities from an API
@@ -121,7 +134,7 @@ const MentorProfile = ({ timestamp, user }) => {
   const handleSubmit =  async (user) => {
     const user_type = user ? user['custom:groupName'] : ''
     if (user_type === 'mentor') {
-    const user_profile = { name, surname, email, location: {country: selectedCountry, city}, current_job, college_major: collegeMajor, major };
+    const user_profile = { name, surname, email, location: {country: selectedCountry, city}, current_job, college_major: collegeMajor, major, image };
     if ( !user_profile.name || !user_profile.surname || !user_profile.email || !user_profile.location.country || !user_profile.location.city || !user_profile.current_job ) {
       toast.error("Please fill in all required fields");
       return;
@@ -139,11 +152,12 @@ const MentorProfile = ({ timestamp, user }) => {
     }
     }
      else {
-      const user_profile = { name, surname, email, location: {country: selectedCountry, city}, current_job, college_major: collegeMajor, major, university, studyMajor, career_goal };
+      const user_profile = { name, surname, email, location: {country: selectedCountry, city}, current_job, college_major: collegeMajor, major, university, studyMajor, career_goal, image };
       if ( !user_profile.name || !user_profile.surname || !user_profile.email || !user_profile.location.country || !user_profile.location.city ) {
         toast.error("Please fill in all required fields");
         return;
       }
+      console.log("user_profile", user_profile)
      const response = await API.post('profileAPI', '/mentee', {
           body: user_profile,
           })
@@ -156,10 +170,14 @@ const MentorProfile = ({ timestamp, user }) => {
           }
     }
   };
+  const handleImage = (image) => {
+    console.log("imageURL", image)
+    setData({ ...data, image });
+  };
 
   return (
     <div { ...user && user['custom:groupName'] === 'mentee' ? { className: "mentee-dashboard" } : { className: "dashboard" } }>
-      <Header timestamp={timestamp} user={user} />
+      <Header timestamp={timestamp} user={user} handleImage={handleImage} profile={profile.image} />
       <div { ...user && user['custom:groupName'] === 'mentee' ? { className: "mentee-dashboard-item" } : { className: "dashboard-item" } }>
       <div className="information-boxe">
         <div className="information-box">

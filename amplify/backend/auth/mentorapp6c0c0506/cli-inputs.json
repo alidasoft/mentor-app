@@ -2,7 +2,7 @@
   "version": "1",
   "cognitoConfig": {
     "identityPoolName": "mentorapp6c0c0506_identitypool_6c0c0506",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "mentor6c0c0506",
     "userPoolName": "mentorapp6c0c0506_userpool_6c0c0506",
     "autoVerifiedAttributes": [

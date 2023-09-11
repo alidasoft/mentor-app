@@ -229,6 +229,33 @@
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     },
+    "mentorappbucket": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "mentorapp6c0c0506"
+        },
+        {
+          "attributes": [
+            "mentorGroupRole"
+          ],
+          "category": "auth",
+          "resourceName": "userPoolGroups"
+        },
+        {
+          "attributes": [
+            "menteeGroupRole"
+          ],
+          "category": "auth",
+          "resourceName": "userPoolGroups"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    },
     "profile": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"

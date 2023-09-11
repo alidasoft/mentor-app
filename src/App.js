@@ -21,7 +21,7 @@ import HomeComponent from "./Components/HomeComponent";
 
 function App({ signOut }) {
   const [user, setUser] = useState(null);
-  const [profile, setProfile] = useState(null)
+  // const [profile, setProfile] = useState(null)
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const Navigate = useNavigate();
   const location = useLocation();
@@ -59,29 +59,29 @@ function App({ signOut }) {
     Hub.listen("auth", listener);
     return () => Hub.remove("auth", listener);
   }, []);
-  //get profile from /profiles api
+ // get profile from /profiles api
   // useEffect(() => {
   //   const getProfile = async () => {
   //     try {
-  //       const response = await API.get("profileRest", "/mentor/1");
+  //       const response = await API.get("profileAPI", "/mentee/object/" + user?.email);
+  //       setProfile(response);
   //         console.log(response);
   //     } catch (error) {
   //       console.log(error);
   //     }
   //   }; 
   //   getProfile();
-  // }, [user]);
-const getProfile = async () => {
-  try {
-    console.log("user email", user?.email);
-    const response = await API.get("profileAPI", "/mentee/object/" + user?.email);
-      console.log("response from get method", response);
-  } catch (error) {
-    console.log(error);
-  }
-};
-getProfile();
-
+  // }, [user?.location]);
+// const getProfile = async () => {
+//   try {
+//     console.log("user email", user?.email);
+//     const response = await API.get("profileAPI", "/mentee/object/" + user?.email);
+//       console.log("response from get method", response);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+// getProfile();
 
   const getFormattedTime = () => {
     const date = new Date();

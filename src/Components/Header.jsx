@@ -1,21 +1,45 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Storage, API } from 'aws-amplify';
 
-const Header = ({ timestamp, user }) => {
+
+const Header = ({ timestamp, user, handleImage, profile }) => {
+    console.log("profile", profile)
     const fileInputRef = useRef(null)
     const [image, setImage] = useState(null)
-    console.log("user", user)
-    const handleImage = (e) => {
-        console.log('file');
+    const [imageURL, setImageURL] = useState(null)
+    const handleImageUpload = async (e) => {
+        console.log("triggered")
         const file = e.target.files[0]; 
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setImage(reader.result); 
-        };
-
-        if (file) {
-            reader.readAsDataURL(file); 
-        }
+        console.log("file", file)
+       //authenticated users can upload files to the s3 bucket
+       try {
+        const result = await Storage.put(file.name, file, {
+            level: 'protected',
+            contentType: 'image/png'
+        })
+        console.log("result", result)
+        setImage(result.key)
+          // Construct the image URL (required for displaying the image)
+            const imageUrl = await Storage.get(result.key, { level: 'protected' })
+          setImageURL(imageUrl)
+          console.log("imageUrl", imageUrl)
+       } catch (error) {
+              console.log(error)
+         }
     }
+    useEffect(() => {
+        handleImage(image)
+    }, [image])
+    useEffect(() => {
+        const getImage = async () => {
+            if (profile) {
+                const imageUrl = await Storage.get(profile, { level: 'protected' })
+                setImageURL(imageUrl)
+            }
+        }
+        getImage()
+    }, [profile])
+    console.log("profile", profile)
     return (
         <div className="dashboard">
             <div className="dashboard-child" />
@@ -29,10 +53,10 @@ const Header = ({ timestamp, user }) => {
             <div className="photo">
                 <div className="photo-child" />
                 {/* Display the selected image */}
-                {image && <img className="photo-icon" alt="" src={image} />}
+                <img className="photo-icon" alt="" src={imageURL ? imageURL : profile} />
             </div>
             <label>
-                <input type="file" accept="image/*" ref={fileInputRef} onChange={handleImage}  />
+                <input type="file" accept="image/*" ref={fileInputRef} onChange={handleImageUpload}  />
                 <img className="camera-icon" alt="" src="/camera.svg" />
             </label>
             <div className="welcome-container">

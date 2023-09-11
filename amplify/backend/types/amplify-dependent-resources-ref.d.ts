@@ -75,6 +75,10 @@ export type AmplifyDependentResourcesAttributes = {
       "Region": "string",
       "StreamArn": "string"
     },
+    "mentorappbucket": {
+      "BucketName": "string",
+      "Region": "string"
+    },
     "profile": {
       "Arn": "string",
       "Name": "string",
