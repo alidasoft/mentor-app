@@ -96,7 +96,8 @@
       "storage": {
         "profile": {},
         "mentorTable": {},
-        "menteeTable": {}
+        "menteeTable": {},
+        "mentorappbucket": {}
       },
       "api": {
         "profileAPI": {}
