@@ -101,12 +101,18 @@ function App({ signOut }) {
     return () => clearInterval(interval);
   }, []);
 
+  const getUserDetails = (user) => {
+    setUser(user);
+    console.log("user from app.js", user);
+  }
+
+
     return (
       <>
         <Routes>
-            <Route path="/mentor/signup" element={<MentorSignup target_user={'mentor'} timestamp={timestamp}  />} />
+            <Route path="/mentor/signup" element={<MentorSignup target_user={'mentor'} timestamp={timestamp} getUserDetails={getUserDetails} />} />
             <Route path="/mentor/login" element={<MentorLogin target_user={'mentor'} timestamp={timestamp} />} />
-            <Route path="/mentee/signup" element={<MenteeSignup target_user={'mentee'} timestamp={timestamp} />} />
+            <Route path="/mentee/signup" element={<MenteeSignup target_user={'mentee'} timestamp={timestamp} getUserDetails={getUserDetails} />} />
             <Route path="/mentee/login" element={<MenteeLogin target_user={'mentee'} timestamp={timestamp} />} />
             <Route path="/admin/signup" element={<AdminSignup target_user={`admin`} timestamp={timestamp} />} />
             <Route path="/admin/login" element={<AdminLogin target_user={'admin'} timestamp={timestamp} />} />
@@ -117,7 +123,7 @@ function App({ signOut }) {
               // </Protected>
             } />
             <Route path="/" element={<HomeComponent timestamp={timestamp} />} />
-            <Route path="/confirm" element={<ConfirmSignup timestamp={timestamp} /> } />
+            <Route path="/confirm" element={<ConfirmSignup timestamp={timestamp} user={user} /> } />
             <Route path="/mentor/profile" element={<MentorProfile timestamp={timestamp} user={user}  />} />
             <Route path="/mentee/profile" element={<MentorProfile timestamp={timestamp} user={user}  />} />
         </Routes>

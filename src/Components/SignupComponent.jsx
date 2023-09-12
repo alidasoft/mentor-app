@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { Authenticator, AmplifySignUp, AmplifySignOut } from '@aws-amplify/ui-react';
 
 
-const SignupComponent = ({ target_user, timestamp }) => {
+const SignupComponent = ({ target_user, timestamp, getUserDetails }) => {
   const navigate = useNavigate()
   const [value, setValue] = useState('')
   console.log("target", target_user)
@@ -27,11 +27,12 @@ const SignupComponent = ({ target_user, timestamp }) => {
   }
   const handleSubmit = async () => {
     const user = { name, family_name, username: email, password }
-    console.log(user)
+    console.log(data)
     try {
       const response = await Auth.signUp({username: email, password, attributes: {name, family_name, 'custom:groupName': groupName}})
       console.log(response)
       if (response) {
+        getUserDetails(user)
         navigate('/confirm')
         toast.success(`check email for confirmation code`)
       } else {

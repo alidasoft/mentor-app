@@ -1,10 +1,10 @@
 import React from "react";
 import Signup_Component from "../../Components/SignupComponent";
 
-const MenteeSignup = ({ target_user, timestamp }) => {
+const MenteeSignup = ({ target_user, timestamp, getUserDetails }) => {
     return (
         <div>
-            <Signup_Component target_user={target_user} timestamp={timestamp} />
+            <Signup_Component target_user={target_user} timestamp={timestamp} getUserDetails={getUserDetails} />
         </div>
     );
 };

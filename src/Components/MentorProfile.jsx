@@ -39,6 +39,15 @@ const MentorProfile = ({ timestamp, user }) => {
   };
 useEffect(() => {
     if (user) {
+      const user_type = user['custom:groupName']
+      if (user_type === 'mentor') {
+        API.get('profileAPI', '/mentor/object/' + user.email)
+        .then((response) => {
+          console.log("response from get", response);
+          setProfile(response);
+        })
+        .catch((error) => console.error('Error fetching profile:', error));
+      } else {
       API.get('profileAPI', '/mentee/object/' + user.email)
         .then((response) => {
           console.log("response from get", response);
@@ -46,6 +55,7 @@ useEffect(() => {
         })
         .catch((error) => console.error('Error fetching profile:', error));
     }
+  }
   }, [user]);
   // Use useEffect to set initial values based on the user prop
   useEffect(() => {
@@ -144,7 +154,7 @@ useEffect(() => {
       return;
     }
 
-    const response = await API.post('profileAPI', '/mentor/email', {
+    const response = await API.post('profileAPI', '/mentor', {
       body: user_profile,
     });
     console.log("response from post", response);
@@ -243,10 +253,10 @@ useEffect(() => {
                       <input className="name-input" placeholder="Enter your university" name="university" value={university} onChange={handleInput} />
                     </div>
                     <div className="information-box10">
-                      <input className="name-input" placeholder="Enter your university" name="studyMajor" value={studyMajor} onChange={handleInput} />
+                      <input className="name-input" placeholder="Enter Current Major" name="studyMajor" value={studyMajor} onChange={handleInput} />
                     </div>
                     <div className="information-box11">
-                      <input className="name-input" placeholder="Enter your university" name="career_goal" value={career_goal} onChange={handleInput} />
+                      <input className="name-input" placeholder="Enter your Career Goal" name="career_goal" value={career_goal} onChange={handleInput} />
                     </div>
                   </>
                   ) : ''}
@@ -259,7 +269,7 @@ useEffect(() => {
         <button className="button-text" onClick={handleSubmit}>Update Profile</button>
       </div>
       <div { ...user && user['custom:groupName'] === 'mentee' ? { className: "mentee-btn2 btn-button " } : { className: "btn2 btn-button" } }>
-        <button className="button-text" onClick={()=>handleSubmit(user)}>Upgrade</button>
+        <button className="button-text" onClick={()=>handleSubmit(user)}>Update</button>
       </div>
       </div>
     </div>
