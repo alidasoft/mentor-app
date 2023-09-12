@@ -50,6 +50,10 @@ useEffect(() => {
   // Use useEffect to set initial values based on the user prop
   useEffect(() => {
     if (user) {
+      profile && profile.university && setCurrentUniversity('yes');
+      profile && profile.major != '' ? setCollegeMajor('yes') : setCollegeMajor('no');
+      profile && profile.location && profile.location.country && setSelectedCountry(profile.location.country);
+      profile && profile.location && profile.location.city && setData({ ...data, location: { ...data.location, city: profile.location.city } });
       setData({
         name: user.name || '',
         surname: user.family_name || '',

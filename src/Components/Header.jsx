@@ -39,7 +39,10 @@ const Header = ({ timestamp, user, handleImage, profile }) => {
         }
         getImage()
     }, [profile])
-    console.log("profile", profile)
+    const handleGoBack = () => {
+        // Go back to the previous page
+        window.history.back();
+    }
     return (
         <div className="dashboard">
             <div className="dashboard-child" />
@@ -60,6 +63,7 @@ const Header = ({ timestamp, user, handleImage, profile }) => {
                 <img className="camera-icon" alt="" src="/camera.svg" />
             </label>
             <div className="welcome-container">
+                <img className="back-arrow" alt="" src="/back-arrow-svgrepo-com.svg" onClick={handleGoBack} />
                 <span className="welcome-container1">
                     <span className="welcome">{`Welcome `}</span>
                     <span className="user-name">{user ? user.name + ' ' + user.family_name  : ''}</span>

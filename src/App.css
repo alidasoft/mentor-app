@@ -185,7 +185,7 @@
   width: 232px;
   height: 24px;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-shrink: 0;
   position: absolute;
   top: 186px;
@@ -196,6 +196,12 @@
 .welcome-container1 {
   line-break: anywhere;
   width: 100%;
+}
+.back-arrow {
+  position: absolute;
+  top: 0;
+  left: -70px;
+  cursor: pointer;
 }
 
 .welcome {
