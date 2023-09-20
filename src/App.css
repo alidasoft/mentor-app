@@ -203,6 +203,13 @@
   left: -70px;
   cursor: pointer;
 }
+.logout-icon {
+  position: absolute;
+  top: 5;
+  right: -50px;
+  cursor: pointer;
+  background-color: black;
+}
 
 .welcome {
   color: rgba(0, 0, 0, 0.75);

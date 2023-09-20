@@ -160,7 +160,7 @@ useEffect(() => {
     console.log("response from post", response);
     if (response.success) {
       toast.success("Profile updated successfully");
-      navigate('/home');
+      navigate(`/home/${user['custom:groupName']}`); // navigate to mentor dashboard
     } else {
       toast.error("Error updating profile");
     }
@@ -171,14 +171,12 @@ useEffect(() => {
         toast.error("Please fill in all required fields");
         return;
       }
-      console.log("user_profile", user_profile)
      const response = await API.post('profileAPI', '/mentee', {
           body: user_profile,
           })
-          console.log("response from post", response);
           if (response.success) {
               toast.success("Profile updated successfully");
-              navigate('/home');
+              navigate('/home/mentee'); // navigate to mentee dashboard
           } else {
               toast.error("Error updating profile");
           }
@@ -191,7 +189,7 @@ useEffect(() => {
 
   return (
     <div { ...user && user['custom:groupName'] === 'mentee' ? { className: "mentee-dashboard" } : { className: "dashboard" } }>
-      <Header timestamp={timestamp} user={user} handleImage={handleImage} profile={profile.image} />
+      <Header timestamp={timestamp} user={user} handleImage={handleImage} profile={profile} />
       <div { ...user && user['custom:groupName'] === 'mentee' ? { className: "mentee-dashboard-item" } : { className: "dashboard-item" } }>
       <div className="information-boxe">
         <div className="information-box">

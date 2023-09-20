@@ -18,6 +18,8 @@ import "@aws-amplify/ui-react/styles.css";
 import { Auth, Hub, API } from "aws-amplify";
 
 import HomeComponent from "./Components/HomeComponent";
+import HomeMentor from "./Components/HomeMentor";
+import HomeMentee from "./Components/HomeMentee";
 
 function App({ signOut }) {
   const [user, setUser] = useState(null);
@@ -59,29 +61,6 @@ function App({ signOut }) {
     Hub.listen("auth", listener);
     return () => Hub.remove("auth", listener);
   }, []);
- // get profile from /profiles api
-  // useEffect(() => {
-  //   const getProfile = async () => {
-  //     try {
-  //       const response = await API.get("profileAPI", "/mentee/object/" + user?.email);
-  //       setProfile(response);
-  //         console.log(response);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }; 
-  //   getProfile();
-  // }, [user?.location]);
-// const getProfile = async () => {
-//   try {
-//     console.log("user email", user?.email);
-//     const response = await API.get("profileAPI", "/mentee/object/" + user?.email);
-//       console.log("response from get method", response);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// getProfile();
 
   const getFormattedTime = () => {
     const date = new Date();
@@ -122,6 +101,8 @@ function App({ signOut }) {
             <UnderConstruction timestamp={timestamp} user={user} />
               // </Protected>
             } />
+            <Route path="/home/mentor" element={ <HomeMentor timestamp={timestamp} user={user} />} />
+            <Route path="/home/mentee" element={ <HomeMentee timestamp={timestamp} user={user} />} />
             <Route path="/" element={<HomeComponent timestamp={timestamp} />} />
             <Route path="/confirm" element={<ConfirmSignup timestamp={timestamp} user={user} /> } />
             <Route path="/mentor/profile" element={<MentorProfile timestamp={timestamp} user={user}  />} />

@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Storage, API } from 'aws-amplify';
+import { Storage, API, Auth } from 'aws-amplify';
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 
 
-const Header = ({ timestamp, user, handleImage, profile }) => {
-    console.log("profile", profile)
+const Header = ({ timestamp, user, handleImage, profile, signOut }) => {
+    const navigate = useNavigate()
     const fileInputRef = useRef(null)
     const [image, setImage] = useState(null)
     const [imageURL, setImageURL] = useState(null)
@@ -27,13 +29,15 @@ const Header = ({ timestamp, user, handleImage, profile }) => {
               console.log(error)
          }
     }
+    //get the route for the current page
+    const route = window.location.pathname
     useEffect(() => {
         handleImage(image)
     }, [image])
     useEffect(() => {
         const getImage = async () => {
             if (profile) {
-                const imageUrl = await Storage.get(profile, { level: 'protected' })
+                const imageUrl = await Storage.get(profile.image, { level: 'protected' })
                 setImageURL(imageUrl)
             }
         }
@@ -43,6 +47,14 @@ const Header = ({ timestamp, user, handleImage, profile }) => {
         // Go back to the previous page
         window.history.back();
     }
+    const handleLogout = async () => {
+        try {
+          const response = await Auth.signOut()
+          navigate('/')
+        } catch (error) {
+          console.log('error signing out: ', error);
+        }
+      }
     return (
         <div className="dashboard">
             <div className="dashboard-child" />
@@ -53,21 +65,34 @@ const Header = ({ timestamp, user, handleImage, profile }) => {
                 <img className="vector-icon" alt="" src="/vector.svg" />
                 <div className="timestamp">{timestamp}</div>
             </div>
-            <div className="photo">
+            {route.includes('home') ? (
+                <Link to={user?`/${user['custom:groupName']}/profile`:''}>
+                    <div className="photo">
                 <div className="photo-child" />
                 {/* Display the selected image */}
                 <img className="photo-icon" alt="" src={imageURL ? imageURL : profile} />
             </div>
-            <label>
-                <input type="file" accept="image/*" ref={fileInputRef} onChange={handleImageUpload}  />
-                <img className="camera-icon" alt="" src="/camera.svg" />
-            </label>
+                </Link>
+            ) : (
+                <div className="photo">
+                <div className="photo-child" />
+                {/* Display the selected image */}
+                <img className="photo-icon" alt="" src={imageURL ? imageURL : profile} />
+            </div>
+            )}
+            {route.includes('profile') ? (
+                            <label>
+                            <input type="file" accept="image/*" ref={fileInputRef} onChange={handleImageUpload}  />
+                            <img className="camera-icon" alt="" src="/camera.svg" />
+                        </label>
+            ) : ''}
             <div className="welcome-container">
                 <img className="back-arrow" alt="" src="/back-arrow-svgrepo-com.svg" onClick={handleGoBack} />
                 <span className="welcome-container1">
                     <span className="welcome">{`Welcome `}</span>
                     <span className="user-name">{user ? user.name + ' ' + user.family_name  : ''}</span>
                 </span>
+                <img className="logout-icon" alt="" src="/logout-svgrepo-com.svg" onClick={handleLogout} />
             </div>
         </div>
     );
