@@ -1,13 +1,10 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
-import Header from './Header'
-import { Storage, API, Auth } from 'aws-amplify'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import Header from '../../Components/Header'
+import { API } from 'aws-amplify'
+import NavBar from '../../Components/NavBar'
 
 
-const HomeMentor = ({ user, timestamp, signOut }) => {
-    const navigate = useNavigate
-    const [imageURL, setImageURL] = useState(null)
+const MentorHome = ({ user, timestamp }) => {
     const [profile, setProfile] = useState(null)
     const handleImage = (image) => {
         console.log("image", image)
@@ -27,22 +24,16 @@ const HomeMentor = ({ user, timestamp, signOut }) => {
     getProfile()
     } , [user])
     
-const handleSignOut = async () => {
-    try {
-      const response = await Auth.signOut()
-      console.log(response)
-      signOut()
-      navigate('/')
-    } catch (error) {
-      console.log('error signing out: ', error);
-    }
-  }
+
   return (
     <>
+    <div { ...user && user['custom:groupName'] === 'mentee' ? { className: "mentee-dashboard" } : { className: "dashboard" } }>
     <Header timestamp={timestamp} user={user} handleImage={handleImage} profile={profile} />
+    <NavBar />
+    </div>
 
   </>
   )
 }
 
-export default HomeMentor
+export default MentorHome

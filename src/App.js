@@ -18,8 +18,8 @@ import "@aws-amplify/ui-react/styles.css";
 import { Auth, Hub, API } from "aws-amplify";
 
 import HomeComponent from "./Components/HomeComponent";
-import HomeMentor from "./Components/HomeMentor";
-import HomeMentee from "./Components/HomeMentee";
+import MenteeHome from "./pages/mentee_pages/MenteeHome";
+import MentorHome from "./pages/mentor_pages/MentorHome";
 
 function App({ signOut }) {
   const [user, setUser] = useState(null);
@@ -101,8 +101,8 @@ function App({ signOut }) {
             <UnderConstruction timestamp={timestamp} user={user} />
               // </Protected>
             } />
-            <Route path="/home/mentor" element={ <HomeMentor timestamp={timestamp} user={user} />} />
-            <Route path="/home/mentee" element={ <HomeMentee timestamp={timestamp} user={user} />} />
+            <Route path="/home/mentor" element={ <MentorHome timestamp={timestamp} user={user} />} />
+            <Route path="/home/mentee" element={ <MenteeHome timestamp={timestamp} user={user} />} />
             <Route path="/" element={<HomeComponent timestamp={timestamp} />} />
             <Route path="/confirm" element={<ConfirmSignup timestamp={timestamp} user={user} /> } />
             <Route path="/mentor/profile" element={<MentorProfile timestamp={timestamp} user={user}  />} />

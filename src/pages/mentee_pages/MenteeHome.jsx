@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
-import Header from './Header'
-import { Storage, API, Auth } from 'aws-amplify'
+import React, { useEffect, useState } from 'react'
+import Header from '../../Components/Header'
+import NavBar from '../../Components/NavBar'
+import { API, Auth } from 'aws-amplify'
 
-const HomeMentee = ({ user, timestamp, signOut }) => {
-    const [imageURL, setImageURL] = useState(null)
+const MenteeHome = ({ user, timestamp, signOut }) => {
     const [profile, setProfile] = useState(null)
     const handleImage = (image) => {
         console.log("image", image)
@@ -24,7 +23,7 @@ const HomeMentee = ({ user, timestamp, signOut }) => {
     getProfile()
     } , [user])
 
-    const handleSignOut = async () => {
+    const handleSignOut = async ({ timestamp, user}) => {
         try {
           const response = await Auth.signOut()
           console.log(response)
@@ -36,12 +35,12 @@ const HomeMentee = ({ user, timestamp, signOut }) => {
       }
     return (
         <>
-        <Header timestamp={timestamp} user={user} handleImage={handleImage} profile={profile} />
-        
-        <button className="btn btn-button" onClick={handleSignOut}>Sign Out</button>
-
-      </>
+            <div { ...user && user['custom:groupName'] === 'mentee' ? { className: "mentee-dashboard" } : { className: "dashboard" } }>
+                <Header timestamp={timestamp} user={user} handleImage={handleImage} profile={profile} />
+                <NavBar />
+            </div>
+        </>
       )
 }
 
-export default HomeMentee
+export default MenteeHome
