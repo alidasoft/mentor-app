@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const NavBar = () => {
+const NavBar = ({ userType }) => {
   return (
     <>
        <div className="information-boxes">
@@ -9,13 +9,13 @@ const NavBar = () => {
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
-                    <Link className="nav-link" to="/home">Home</Link>
+                    <Link className="nav-link" to={`/home/${userType}`}>Home</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to="/mentor/profile">My Network</Link>
+                    <Link className="nav-link" to={`/home/${userType}/network`}>My Network</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to="/mentee/mentor">Post Notifications</Link>
+                    <Link className="nav-link" to={`/home/${userType}/notifications`}>Notifications</Link>
                 </li>
             </ul>   
         </nav>

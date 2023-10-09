@@ -13,6 +13,8 @@ import AdminSignup from "./pages/admin_pages/AdminSignup";
 import MentorProfile from "./Components/MentorProfile";
 import ConfirmSignup from "./Components/ConfirmSignup";
 import UnderConstruction from "./Components/UnderConstruction";
+import MentorNetowrk from "./pages/mentor_pages/MentorNetwork";
+import MentorNotifications from "./pages/mentor_pages/MentorNotifications";
 import EditProfile from "./pages/edit-profile/EditProfile";
 import "@aws-amplify/ui-react/styles.css";
 import { Auth, Hub, API } from "aws-amplify";
@@ -20,6 +22,8 @@ import { Auth, Hub, API } from "aws-amplify";
 import HomeComponent from "./Components/HomeComponent";
 import MenteeHome from "./pages/mentee_pages/MenteeHome";
 import MentorHome from "./pages/mentor_pages/MentorHome";
+import MenteeNetwork from "./pages/mentee_pages/MenteeNetwork";
+import MenteeNotifications from "./pages/mentee_pages/MenteeNotifications";
 
 function App({ signOut }) {
   const [user, setUser] = useState(null);
@@ -102,7 +106,11 @@ function App({ signOut }) {
               // </Protected>
             } />
             <Route path="/home/mentor" element={ <MentorHome timestamp={timestamp} user={user} />} />
+            <Route path="/home/mentor/network" element={ <MentorNetowrk timestamp={timestamp} user={user} />} />
+            <Route path="/home/mentor/notifications" element={ <MentorNotifications timestamp={timestamp} user={user} />} />
             <Route path="/home/mentee" element={ <MenteeHome timestamp={timestamp} user={user} />} />
+            <Route path="/home/mentee/network" element={ <MenteeNetwork timestamp={timestamp} user={user} />} />
+            <Route path="/home/mentee/notifications" element={ <MenteeNotifications timestamp={timestamp} user={user} />} />
             <Route path="/" element={<HomeComponent timestamp={timestamp} />} />
             <Route path="/confirm" element={<ConfirmSignup timestamp={timestamp} user={user} /> } />
             <Route path="/mentor/profile" element={<MentorProfile timestamp={timestamp} user={user}  />} />
